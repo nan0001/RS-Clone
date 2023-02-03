@@ -1,4 +1,5 @@
 import { TAGS } from '../../../common/helpers/constants';
+import cookieBg from '../../../common/assets/cookie_bg.png';
 
 export const CONSTANTS = {
   entrance: {
@@ -18,7 +19,7 @@ export const CONSTANTS = {
     tag: TAGS.img,
     classList: 'entrance__image',
     attributes: {
-      src: './src/common/assets/cookie_bg.png',
+      src: cookieBg,
     },
   },
   registerBtn: {
