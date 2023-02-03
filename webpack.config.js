@@ -44,6 +44,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: '[path][name][ext]',
   },
   devServer: {
     port: 8080,
