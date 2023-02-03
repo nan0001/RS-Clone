@@ -1,0 +1,3 @@
+class Menu {
+  static draw() {}
+}
