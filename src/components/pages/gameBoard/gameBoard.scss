@@ -1,0 +1,24 @@
+@import '../../../common/styles/main';
+
+.wrapper-game {
+  background-color: $light;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  .game{
+    flex: 1 1 auto;
+    display: flex;
+    &__controls{
+
+    }
+    &__field{
+flex-grow: 1;
+    }
+  }
+  .boosters{
+    width: 100%;
+    height: 5rem;
+    background-color: $light-pink;
+  }
+
+}
