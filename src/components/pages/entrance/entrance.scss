@@ -1,0 +1,36 @@
+@import '../../../common/styles/main';
+
+.entrance {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: url('../../../common/assets/bg.png');
+  background-color: #bf8654;
+  background-size: contain;
+
+  .entrance__menu {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .entrance__title {
+      font-family: $font-title;
+      font-size: 6em;
+    }
+  }
+
+  .entrance__image {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px white, -5px -5px 15px white;
+  }
+}

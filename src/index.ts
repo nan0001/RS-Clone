@@ -1,3 +1,4 @@
 import './common/styles/reset.scss';
+import Entrance from './components/pages/entrance/Entrance';
 
-console.log('Hello!');
+document.body.append(Entrance.draw());
