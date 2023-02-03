@@ -1,29 +1,29 @@
-import {TAGS} from "../../../common/helpers/constants";
+import { TAGS } from '../../../common/helpers/constants';
 
 export const CONSTANTS = {
   gameWrapper: {
     tag: TAGS.section,
-    classList: 'wrapper-game'
+    classList: 'wrapper-game',
   },
-  gameBoard:{
+  gameBoard: {
     tag: TAGS.div,
-    classList: 'game'
+    classList: 'game',
   },
-  gameControls:{
+  gameControls: {
     tag: TAGS.div,
-    classList: 'game__controls'
+    classList: 'game__controls',
   },
-  gameField:{
+  gameField: {
     tag: TAGS.div,
-    classList: 'game__field'
+    classList: 'game__field',
   },
-  returnBtn:{
+  returnBtn: {
     tag: TAGS.button,
     classList: ['button', 'button__return'],
     text: 'Return',
   },
-  boosters:{
+  boosters: {
     tag: TAGS.div,
-    classList: 'boosters'
-  }
+    classList: 'boosters',
+  },
 };

@@ -1,7 +1,7 @@
 import createElement from '../../../common/helpers/createElement';
 import { CONSTANTS } from './constants';
-import  './gameBoard.scss'
-import {stoptGame} from "../../../common/helpers/gameManagement";
+import './gameBoard.scss';
+import { stoptGame } from '../../../common/helpers/gameManagement';
 
 class GameBoard {
   static draw() {
@@ -12,13 +12,13 @@ class GameBoard {
     const returnBtn = createElement(CONSTANTS.returnBtn);
     const boosters = createElement(CONSTANTS.boosters);
 
-    gameBoard.append(gameControls,gameField);
+    gameBoard.append(gameControls, gameField);
     gameControls.append(returnBtn);
-    gameWrapper.append(gameBoard,boosters);
-    returnBtn.addEventListener('click',stoptGame);
+    gameWrapper.append(gameBoard, boosters);
+    returnBtn.addEventListener('click', stoptGame);
 
     return gameWrapper;
   }
-  }
+}
 
-  export default GameBoard
+export default GameBoard;
