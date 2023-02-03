@@ -4,8 +4,7 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: url('../../../common/assets/bg.png');
-  background-color: #bf8654;
+  background-color: $light;
   background-size: contain;
 
   .entrance__menu {
@@ -13,24 +12,57 @@
     z-index: 10;
     width: 100%;
     height: 100%;
+    padding: 5% 20%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    gap: 10%;
     align-items: center;
 
     .entrance__title {
+      position: relative;
       font-family: $font-title;
       font-size: 6em;
+      color: $cookie;
+      text-shadow: 2px 2px $dark-red, -2px -2px $dark-red, 2px -2px $dark-red,
+        -2px 2px $dark-red;
+    }
+
+    .entrance__buttons {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      padding: 5% 15%;
+      gap: 5%;
+
+      .button {
+        width: 100%;
+        padding: 2% 5%;
+        font-size: 1.8em;
+        font-weight: 700;
+        border-radius: 15px;
+        border: 2px solid $dark-red;
+        outline: none;
+        background-color: $light-pink;
+        color: $dark-red;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: inset 6px 6px $cookie;
+          background-color: #e9b68c;
+          font-size: 1.7em;
+        }
+      }
     }
   }
 
   .entrance__image {
     position: absolute;
+    width: 40%;
+    max-width: 480px;
     z-index: 0;
     bottom: 0;
     left: 0;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 5px 5px 15px white, -5px -5px 15px white;
   }
 }

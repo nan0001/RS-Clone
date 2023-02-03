@@ -1,7 +1,20 @@
 @font-face {
   font-family: 'Weroth';
-  src: url('../../../common/styles/fonts/font.otf') format('opentype');
+  src: url('../../../common/styles/fonts/Weroth.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('../../../common/styles/fonts/Comfortaa.ttf') format('opentype');
 }
 
 //Fonts
-$font-title: 'Weroth';
+$font-title: 'Weroth', serif;
+$font-usual: 'Comfortaa', serif;
+
+//Colors
+$light: #f2d8d8;
+$light-pink: #f0c4a1;
+$cookie: #d7996b;
+$dark-red: #732002;
+$brown: #4e3518;

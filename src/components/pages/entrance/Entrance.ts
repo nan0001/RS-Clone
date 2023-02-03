@@ -8,9 +8,13 @@ class Entrance {
     const menu = createElement(CONSTANTS.entranceMenu);
     const title = createElement(CONSTANTS.entranceTitle);
     const bgImg = createElement(CONSTANTS.entranceBgImg);
+    const btnContainer = createElement(CONSTANTS.btnContainer);
     const registerBtn = createElement(CONSTANTS.registerBtn);
+    const guestBtn = createElement(CONSTANTS.guestBtn);
+    const aboutBtn = createElement(CONSTANTS.aboutBtn);
 
-    menu.append(title, registerBtn);
+    btnContainer.append(registerBtn, guestBtn, aboutBtn);
+    menu.append(title, btnContainer);
     entrance.append(bgImg, menu);
 
     return entrance;

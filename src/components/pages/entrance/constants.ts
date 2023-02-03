@@ -22,9 +22,23 @@ export const CONSTANTS = {
       src: cookieBg,
     },
   },
+  btnContainer: {
+    tag: TAGS.div,
+    classList: 'entrance__buttons',
+  },
   registerBtn: {
     tag: TAGS.button,
-    classList: 'entrance__register',
+    classList: ['button', 'button__register'],
     text: 'Register',
+  },
+  guestBtn: {
+    tag: TAGS.button,
+    classList: ['button', 'button__guest'],
+    text: 'Enter as a guest',
+  },
+  aboutBtn: {
+    tag: TAGS.button,
+    classList: ['button', 'button__about'],
+    text: 'About the project',
   },
 };
