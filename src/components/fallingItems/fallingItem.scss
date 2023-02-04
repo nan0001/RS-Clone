@@ -1,0 +1,49 @@
+
+.fallingItem {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  animation: dropDown 8s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 3rem;
+  color: #f1f6f5;
+  cursor: pointer;
+}
+
+.fallingItem img {
+  width: 100%;
+}
+
+@keyframes dropDown {
+  0% {
+    bottom: 100%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  100% {
+    bottom: 0%;
+  }
+
+}
+
+.cost {
+  position: absolute;
+  font-weight: bold;
+  transform: perspective(300px) rotateX(15deg) scaleY(1.2);
+  transition: all 0.5s;
+
+  text-shadow: 0.1px 1.00px 0 #CCCCCC,
+  0.3px 1.75px 0 #de1212,
+  0.5px 2.50px 0 #095038,
+  0.7px 3.25px 0 #B9B9B9,
+  0.9px 4.00px 0 #e50707;
+}
+
+.hide {
+  visibility: hidden;
+}
