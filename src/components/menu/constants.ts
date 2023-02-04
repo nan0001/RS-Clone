@@ -1,3 +1,5 @@
+import { TAGS } from '../../common/helpers/constants';
+
 export const CONSTANTS = {
   menu: {
     tag: TAGS.div,
@@ -5,11 +7,14 @@ export const CONSTANTS = {
   },
   menuBtn: {
     tag: TAGS.button,
-    classList: ['menu', 'button__menu', 'menu-hidden'],
+    classList: ['button', 'button__menu', 'menu-hidden'],
   },
   menuList: {
     tag: TAGS.ul,
     classList: 'menu__list',
+  },
+  menuItem: {
+    tag: TAGS.li,
   },
   fullscrBtn: {
     tag: TAGS.button,

@@ -18,6 +18,8 @@ export const TAGS = {
   button: 'button',
   input: 'input',
   img: 'img',
+  ul: 'ul',
+  li: 'li',
 };
 
 export const PRODUCTS = [

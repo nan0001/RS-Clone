@@ -1,0 +1,30 @@
+.menu {
+  position: absolute;
+  z-index: 100;
+  top: 2%;
+  left: 2%;
+  width: 80%;
+  height: 7%;
+  display: flex;
+
+  .button {
+    width: 20%;
+    height: 100%;
+  }
+
+  .button__menu {
+    background-position: center;
+    background-size: contain;
+    &.menu-hidden {
+      background-image: url('../../common/assets/icons/menu.svg');
+    }
+    &.menu-visible {
+      background-image: url('../../common/assets/icons/cancel.svg');
+    }
+  }
+
+  .menu__list {
+    display: flex;
+    width: 80%;
+  }
+}
