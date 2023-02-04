@@ -1,31 +1,23 @@
 import { products } from '../../common/assets/data/products';
 import createElement from '../../common/helpers/createElement';
-import { TAGS } from '../../common/helpers/constants';
 import { randomNumber } from '../../common/helpers/generateRandomNumber';
 import './fallingItem.scss';
+import { CONSTANTS } from './constants';
 
 class FallingItem {
-  static gameBoard: HTMLElement;
-
-  static draw() {
-    this.gameBoard = document.querySelector('.game__field') as HTMLElement;
-    const fallingItem = createElement({
-      tag: TAGS.div,
-      classList: 'fallingItem',
-      id: `${Date.now()}`,
-    });
-
+  static draw(board: HTMLElement) {
+    const fallingItem = createElement(CONSTANTS.gameItem);
     const item = this.getRandomItem(products);
-    const cost = createElement({
-      tag: TAGS.div,
-      text: item ? `+${item.cost}` : '',
-      classList: 'hide',
-    });
-    const image = new Image();
-    image.src = item ? item.img : '';
+    const cost = createElement(CONSTANTS.cost);
+    const image = createElement(CONSTANTS.image);
+
+    if (item) {
+      image.setAttribute('src', item.img);
+      cost.textContent = `${item.cost}`;
+    }
     fallingItem.append(image, cost);
-    fallingItem.style.left = `${this.generatePosition()}px`;
-    this.gameBoard.append(fallingItem);
+    fallingItem.style.left = `${this.generatePosition(board)}px`;
+    board.append(fallingItem);
 
     fallingItem.onanimationend = () => {
       fallingItem.remove();
@@ -34,7 +26,7 @@ class FallingItem {
     image.onclick = () => {
       image.classList.add('hide');
       cost.classList.remove('hide');
-      cost.classList.add('cost');
+      cost.classList.add('game-field__item-cost');
       setTimeout(() => {
         fallingItem.remove();
       }, 1000);
@@ -61,29 +53,31 @@ class FallingItem {
     }
   }
 
-  static generatePosition() {
-    const boardWidth = this.gameBoard.getBoundingClientRect().width;
-    const positions = Array.from(document.querySelectorAll('.fallingItem')).map(
-      (e) => {
-        return [
-          +e.getBoundingClientRect().x - 130,
-          +e.getBoundingClientRect().x + 130,
-          +e.getBoundingClientRect().y,
-        ];
-      },
-    );
-    let x = randomNumber(0, boardWidth - 100);
+  static generatePosition(board: HTMLElement) {
+    const boardWidth = board.getBoundingClientRect().width;
+    const itemWidth = 100;
+    const innacuracy = 30;
+    const positions = Array.from(
+      document.querySelectorAll('.game-field__item'),
+    ).map((e) => {
+      return [
+        +e.getBoundingClientRect().x - (itemWidth + innacuracy),
+        +e.getBoundingClientRect().x + (itemWidth + innacuracy),
+        +e.getBoundingClientRect().y,
+      ];
+    });
+    let x = randomNumber(0, boardWidth - itemWidth);
     let counter = 5;
-    while (positions.some((e) => e[0] < x && e[1] > x && e[2] < 100)) {
+    while (positions.some((e) => e[0] < x && e[1] > x && e[2] < itemWidth)) {
       counter--;
       if (counter < 0) {
-        x = -200;
+        x = -itemWidth * 2;
         break;
       }
-      if (x + 100 < boardWidth - 100) {
-        x += 100;
+      if (x + itemWidth < boardWidth - itemWidth) {
+        x += itemWidth;
       } else {
-        x -= boardWidth - 200;
+        x -= boardWidth - itemWidth * 2;
       }
     }
 

@@ -6,8 +6,9 @@ let timerId: NodeJS.Timer;
 export const startGame = () => {
   document.body.replaceChildren();
   document.body.append(GameBoard.draw());
+  const gameBoard = document.querySelector('.game-field') as HTMLElement;
   timerId = setInterval(() => {
-    FallingItem.draw();
+    FallingItem.draw(gameBoard);
   }, 500);
 };
 export const stoptGame = () => {

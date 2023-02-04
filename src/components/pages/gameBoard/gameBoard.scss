@@ -10,13 +10,13 @@
     flex: 1 1 auto;
     display: flex;
 
-    &__field {
+    &-field {
       flex-grow: 1;
       position: relative;
     }
   }
 
-  .boosters {
+  .game-boosters {
     width: 100%;
     height: 5rem;
     background-color: $light-pink;

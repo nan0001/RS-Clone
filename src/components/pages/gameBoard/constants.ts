@@ -11,19 +11,19 @@ export const CONSTANTS = {
   },
   gameControls: {
     tag: TAGS.div,
-    classList: 'game__controls',
+    classList: 'game-controls',
   },
   gameField: {
     tag: TAGS.div,
-    classList: 'game__field',
+    classList: 'game-field',
   },
   returnBtn: {
     tag: TAGS.button,
-    classList: ['button', 'button__return'],
+    classList: ['button', 'game-controls__button'],
     text: 'Return',
   },
   boosters: {
     tag: TAGS.div,
-    classList: 'boosters',
+    classList: 'game-boosters',
   },
 };
