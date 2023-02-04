@@ -1,7 +1,7 @@
 import createElement from '../../../common/helpers/createElement';
 import { CONSTANTS } from './constants';
 import './entrance.scss';
-import {startGame} from "../../../common/helpers/gameManagement";
+import { startGame } from '../../../common/helpers/gameManagement';
 
 class Entrance {
   static draw() {
@@ -17,7 +17,7 @@ class Entrance {
     btnContainer.append(registerBtn, guestBtn, aboutBtn);
     menu.append(title, btnContainer);
     entrance.append(bgImg, menu);
-    guestBtn.addEventListener('click',startGame);
+    guestBtn.addEventListener('click', startGame);
 
     return entrance;
   }
