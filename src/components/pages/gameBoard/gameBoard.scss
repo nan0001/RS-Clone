@@ -5,19 +5,20 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  .game{
+
+  .game {
     flex: 1 1 auto;
     display: flex;
-    
-    &__field{
-flex-grow: 1;
-position: relative;
+
+    &__field {
+      flex-grow: 1;
+      position: relative;
     }
   }
-  .boosters{
+
+  .boosters {
     width: 100%;
     height: 5rem;
     background-color: $light-pink;
   }
-
 }

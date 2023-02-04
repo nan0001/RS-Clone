@@ -72,7 +72,7 @@ class FallingItem {
         ];
       },
     );
-    let x = randomNumber(0, boardWidth - 130);
+    let x = randomNumber(0, boardWidth - 100);
     let counter = 5;
     while (positions.some((e) => e[0] < x && e[1] > x && e[2] < 100)) {
       counter--;
