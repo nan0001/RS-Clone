@@ -1,5 +1,10 @@
 @import '../../../common/styles/main';
 
+@font-face {
+  font-family: 'Weroth';
+  src: url('../../../common/styles/fonts/Weroth.otf') format('opentype');
+}
+
 .entrance {
   width: 100vw;
   height: 100vh;
@@ -21,7 +26,8 @@
 
     .entrance__title {
       position: relative;
-      font-family: $font-title;
+      // font-family: $font-title;
+      font-family: 'Weroth', serif;
       font-size: 6em;
       color: $cookie;
       text-shadow: 2px 2px $dark-red, -2px -2px $dark-red, 2px -2px $dark-red,
