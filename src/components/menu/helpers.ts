@@ -8,6 +8,7 @@ export function addMenuListeners(
     fullscrBtn: HTMLElement;
     soundBtn: HTMLElement;
     langBtn: HTMLElement;
+    helpBtn: HTMLElement;
   },
 ): void {
   menu.addEventListener('click', (e) => {
@@ -27,6 +28,10 @@ export function addMenuListeners(
 
     if (target === buttons.langBtn) {
       toggleLang(buttons.langBtn);
+    }
+
+    if (target === buttons.helpBtn) {
+      showHelpInfo();
     }
   });
 }
@@ -74,3 +79,5 @@ function toggleLang(langBtn: HTMLElement): void {
 
   langBtn.classList.toggle(CONSTANTS.langBtn.classList[2]);
 }
+
+function showHelpInfo(): void {}

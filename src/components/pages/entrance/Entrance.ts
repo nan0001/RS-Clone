@@ -4,7 +4,7 @@ import './entrance.scss';
 import GameBoard from '../gameBoard/GameBoard';
 
 class Entrance {
-  static draw() {
+  static draw(): HTMLElement {
     const entrance = createElement(CONSTANTS.entrance);
     const menu = createElement(CONSTANTS.entranceMenu);
     const title = createElement(CONSTANTS.entranceTitle);
