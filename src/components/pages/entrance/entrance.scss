@@ -26,7 +26,6 @@
 
     .entrance__title {
       position: relative;
-      // font-family: $font-title;
       font-family: 'Weroth', serif;
       font-size: 6em;
       color: $cookie;
@@ -56,7 +55,7 @@
 
         &:hover {
           box-shadow: inset 6px 6px $cookie;
-          background-color: #e9b68c;
+          background-color: $shadow-light-pink;
           font-size: 1.7em;
         }
       }
