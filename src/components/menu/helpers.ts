@@ -1,3 +1,7 @@
+import { changeLang } from '../../common/components/store/reducers/lang';
+import store from '../../common/components/store/store';
+import { LANG } from '../../common/helpers/constants';
+import HelpPopup from '../helpPopup/HelpPopup';
 import Sound from '../sound/Sound';
 import { CONSTANTS } from './constants';
 
@@ -72,12 +76,15 @@ function toggleSound(soundBtn: HTMLElement): void {
 
 function toggleLang(langBtn: HTMLElement): void {
   if (langBtn.classList.contains(CONSTANTS.langBtn.classList[2])) {
-    //change lang to RU
+    store.dispatch(changeLang(LANG.ru));
   } else {
-    //change lang to EN
+    store.dispatch(changeLang(LANG.en));
   }
 
   langBtn.classList.toggle(CONSTANTS.langBtn.classList[2]);
 }
 
-function showHelpInfo(): void {}
+function showHelpInfo(): void {
+  const popup = new HelpPopup().draw();
+  document.body.append(...popup);
+}

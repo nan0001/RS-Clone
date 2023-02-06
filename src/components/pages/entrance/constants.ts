@@ -41,4 +41,7 @@ export const CONSTANTS = {
     classList: ['button', 'button__about'],
     text: 'About the project',
   },
+  registerBtnRU: 'Регистрация',
+  guestBtnRU: 'Войти как гость',
+  aboutBtnRU: 'О проекте',
 };

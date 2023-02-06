@@ -72,3 +72,7 @@ export const PRODUCTS = [
   //   dropChance: 1.8,
   // },
 ];
+export const LANG = {
+  ru: 'ru',
+  en: 'en',
+};
