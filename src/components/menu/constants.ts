@@ -7,7 +7,7 @@ export const CONSTANTS = {
   },
   menuBtn: {
     tag: TAGS.button,
-    classList: ['button', 'button__menu', 'menu-hidden'],
+    classList: ['button', 'button__menu'],
   },
   menuList: {
     tag: TAGS.ul,
@@ -15,6 +15,7 @@ export const CONSTANTS = {
   },
   menuItem: {
     tag: TAGS.li,
+    classList: 'menu__item',
   },
   fullscrBtn: {
     tag: TAGS.button,
@@ -32,4 +33,5 @@ export const CONSTANTS = {
     tag: TAGS.button,
     classList: ['button', 'button__help'],
   },
+  visible: 'menu-visible',
 };

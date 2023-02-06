@@ -1,5 +1,6 @@
 import createElement from '../../common/helpers/createElement';
 import { CONSTANTS } from './constants';
+import { addMenuListeners } from './helpers';
 import './menu.scss';
 
 class Menu {
@@ -11,6 +12,7 @@ class Menu {
     const soundBtn = createElement(CONSTANTS.soundBtn);
     const langBtn = createElement(CONSTANTS.langBtn);
     const helpBtn = createElement(CONSTANTS.helpBtn);
+    const buttons = { menuBtn, fullscrBtn, soundBtn, langBtn, helpBtn };
 
     [fullscrBtn, soundBtn, langBtn, helpBtn].forEach((el) => {
       const menuItem = createElement(CONSTANTS.menuItem);
@@ -18,6 +20,8 @@ class Menu {
       menuItem.append(el);
       menuList.append(menuItem);
     });
+
+    addMenuListeners(menu, buttons);
 
     menu.append(menuBtn, menuList);
 
