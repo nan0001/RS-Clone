@@ -7,7 +7,7 @@ import '../styles/reset.scss';
 import './app.scss';
 
 class App {
-  static init() {
+  static init(): void {
     const overlay = createElement(CONSTANTS.overlay);
 
     overlay.addEventListener('click', () => {

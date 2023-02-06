@@ -4,7 +4,7 @@ import { addMenuListeners } from './helpers';
 import './menu.scss';
 
 class Menu {
-  static draw() {
+  static draw(): HTMLElement {
     const menu = createElement(CONSTANTS.menu);
     const menuBtn = createElement(CONSTANTS.menuBtn);
     const menuList = createElement(CONSTANTS.menuList);

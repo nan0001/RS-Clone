@@ -8,10 +8,10 @@ const cookiesCount = createSlice({
   name: 'cookiesCount',
   initialState,
   reducers: {
-    increaseCookiesCount(state, action: PayloadAction<number>) {
+    increaseCookiesCount(state, action: PayloadAction<number>): void {
       state.count += action.payload;
     },
-    decreaseCookiesCount(state, action: PayloadAction<number>) {
+    decreaseCookiesCount(state, action: PayloadAction<number>): void {
       state.count - action.payload < 0
         ? (state.count = 0)
         : (state.count -= action.payload);
