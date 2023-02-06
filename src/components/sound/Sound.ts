@@ -5,9 +5,24 @@ class Sound {
   static isPlaying = false;
 
   static play(): void {
+    let volume = 0;
+    const maxVolume = 0.2;
+    const volumeStep = 0.01;
+
     this.isPlaying = true;
+    this.audio.volume = volume;
     this.audio.currentTime = 0;
     this.audio.play();
+
+    //чтобы звук не резко начинал играть, накручиваю громкость плавно
+    const volumeInt = setInterval(() => {
+      this.audio.volume = volume;
+      volume += volumeStep;
+
+      if (volume >= maxVolume) {
+        clearInterval(volumeInt);
+      }
+    }, 100);
 
     this.audio.addEventListener('ended', () => {
       this.audio.play();

@@ -1,3 +1,4 @@
+import Sound from '../sound/Sound';
 import { CONSTANTS } from './constants';
 
 export function addMenuListeners(
@@ -56,9 +57,9 @@ function toggleMenu(menu: HTMLElement, menuBtn: HTMLElement): void {
 
 function toggleSound(soundBtn: HTMLElement): void {
   if (soundBtn.classList.contains(CONSTANTS.soundBtn.classList[2])) {
-    //Audio turn off
+    Sound.stop();
   } else {
-    //Audio turn on
+    Sound.play();
   }
 
   soundBtn.classList.toggle(CONSTANTS.soundBtn.classList[2]);
