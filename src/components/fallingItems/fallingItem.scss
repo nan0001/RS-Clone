@@ -1,3 +1,5 @@
+@import '../../common/styles/main';
+
 .game-field__item {
   width: 100px;
   height: 100px;
@@ -21,20 +23,20 @@
     transform: perspective(300px) rotateX(15deg) scaleY(1.2);
     transition: all 0.5s;
 
-    text-shadow: 0.1px 1px 0 #cccccc, 0.3px 1.75px 0 #de1212,
-      0.5px 2.5px 0 #095038, 0.7px 3.25px 0 #b9b9b9, 0.9px 4px 0 #e50707;
+    text-shadow: 0.1px 1px 0 $light, 0.3px 1.75px 0 $bright-red,
+      0.5px 2.5px 0 $dark-red, 0.7px 3.25px 0 $light, 0.9px 4px 0 $bright-red;
   }
 }
 
 @keyframes dropDown {
   0% {
-    bottom: 100%;
+    bottom: calc(100% + 5rem);
   }
   50% {
     bottom: 50%;
   }
   100% {
-    bottom: 0%;
+    bottom: -5rem;
   }
 }
 

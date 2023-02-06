@@ -26,4 +26,8 @@ export const CONSTANTS = {
     tag: TAGS.div,
     classList: 'game-boosters',
   },
+  totalCost: {
+    tag: TAGS.div,
+    classList: 'game-field__total-cost',
+  },
 };
