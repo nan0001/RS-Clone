@@ -1,30 +1,92 @@
+@import '../../common/styles/main';
+
 .menu {
   position: absolute;
   z-index: 100;
   top: 2%;
   left: 2%;
-  width: 80%;
-  height: 7%;
+  width: 5%;
   display: flex;
+  gap: 5%;
+  transition: 0.3s;
 
   .button {
-    width: 20%;
-    height: 100%;
+    height: 50px;
+    width: 50px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .button__menu {
-    background-position: center;
-    background-size: contain;
-    &.menu-hidden {
-      background-image: url('../../common/assets/icons/menu.svg');
-    }
-    &.menu-visible {
-      background-image: url('../../common/assets/icons/cancel.svg');
-    }
+    background-image: url('../../common/assets/images/menu.png');
+    // animation: rotate 0.3s linear;
   }
 
   .menu__list {
-    display: flex;
+    display: none;
     width: 80%;
+    gap: 5%;
+
+    .menu__item {
+      .button__fullscreen {
+        background-image: url('../../common/assets/images/small_screen.png');
+
+        &.fullscreen-off {
+          background-image: url('../../common/assets/images/fullscreen.png');
+        }
+      }
+
+      .button__sound {
+        background-image: url('../../common/assets/images/sound_off.png');
+
+        &.sound-on {
+          background-image: url('../../common/assets/images/sound.png');
+        }
+      }
+
+      .button__lang {
+        background-image: url('../../common/assets/images/lang_ru.png');
+        &.lang-en {
+          background-image: url('../../common/assets/images/lang_en.png');
+        }
+      }
+
+      .button__help {
+        background-image: url('../../common/assets/images/help.png');
+      }
+    }
+  }
+
+  &.menu-visible {
+    width: 40%;
+
+    .menu__list {
+      display: flex;
+    }
+
+    .button__menu {
+      background-image: url('../../common/assets/images/cancel.png');
+    }
   }
 }
+
+// @keyframes rotate {
+//   0% {
+//     transform: scale(1);
+//   }
+//   50% {
+//     transform: scale(0);
+//   }
+//   100% {
+//     transform: scale(1);
+//   }
+// }
