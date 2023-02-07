@@ -20,6 +20,7 @@ export const TAGS = {
   img: 'img',
   ul: 'ul',
   li: 'li',
+  main: 'main',
 };
 
 export const PRODUCTS = [

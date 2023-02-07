@@ -6,4 +6,8 @@ export const CONSTANTS = {
     text: 'Click to start',
     classList: 'overlay',
   },
+  appRoot: {
+    tag: TAGS.main,
+    classList: 'app-root',
+  },
 };
