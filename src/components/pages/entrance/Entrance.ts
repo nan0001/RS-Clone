@@ -1,9 +1,11 @@
+import { changeView } from '../../../common/components/store/reducers/view';
 import store from '../../../common/components/store/store';
-import { LANG } from '../../../common/helpers/constants';
+import { VIEW } from '../../../common/helpers/constants';
 import createElement from '../../../common/helpers/createElement';
 import { CONSTANTS } from './constants';
 import './entrance.scss';
 import GameBoard from '../gameBoard/GameBoard';
+import { changeLanguage } from './helpers';
 
 class Entrance {
   static draw(): HTMLElement {
@@ -19,21 +21,16 @@ class Entrance {
     btnContainer.append(registerBtn, guestBtn, aboutBtn);
     menu.append(title, btnContainer);
     entrance.append(bgImg, menu);
-    guestBtn.addEventListener('click', GameBoard.startGame);
+    guestBtn.addEventListener('click', GameBoard.startGame); //TODO: REMOVE!!
+
+    guestBtn.addEventListener('click', () => {
+      store.dispatch(changeView(VIEW.cookie));
+    });
 
     store.subscribe(() => {
       const state = store.getState();
-      const lang = state.lang.lang;
 
-      if (lang === LANG.ru) {
-        registerBtn.innerText = CONSTANTS.registerBtnRU;
-        guestBtn.innerText = CONSTANTS.guestBtnRU;
-        aboutBtn.innerText = CONSTANTS.aboutBtnRU;
-      } else {
-        registerBtn.innerText = CONSTANTS.registerBtn.text;
-        guestBtn.innerText = CONSTANTS.guestBtn.text;
-        aboutBtn.innerText = CONSTANTS.aboutBtn.text;
-      }
+      changeLanguage(state, { registerBtn, guestBtn, aboutBtn });
     });
 
     return entrance;
