@@ -76,3 +76,9 @@ export const LANG = {
   ru: 'ru',
   en: 'en',
 };
+
+export const VIEW = {
+  cookie: 'cookie',
+  factory: 'factory',
+  home: 'home',
+};

@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cookiesCount from './reducers/cookiesCount';
 import lang from './reducers/lang';
+import view from './reducers/view';
 
 const store = configureStore({
   reducer: {
     cookies: cookiesCount,
     lang: lang,
+    view: view,
   },
 });
 
