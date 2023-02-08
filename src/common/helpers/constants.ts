@@ -73,3 +73,9 @@ export const BOOSTERS = [
     img: booster_3,
   },
 ];
+
+export const FACTORY_TYPES = {
+  s: 's',
+  m: 'm',
+  l: 'l',
+};

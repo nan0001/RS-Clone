@@ -1,9 +1,9 @@
 import Factory from '../../common/components/factory/Factory';
 import { FACTORY_TYPES } from '../../common/helpers/constants';
 import { CONSTANTS } from './constants';
-import './smallFactory.scss';
+import './mediumFactory.scss';
 
-class SmallFactory extends Factory {
+class MediumFactory extends Factory {
   protected title: string;
   protected description: string;
 
@@ -14,10 +14,10 @@ class SmallFactory extends Factory {
   }
 
   draw(): HTMLElement {
-    const factory = super.draw(this.title, this.description, FACTORY_TYPES.s);
+    const factory = super.draw(this.title, this.description, FACTORY_TYPES.m);
 
     return factory;
   }
 }
 
-export default SmallFactory;
+export default MediumFactory;

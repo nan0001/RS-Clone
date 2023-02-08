@@ -38,7 +38,7 @@ class Factory {
     }
   }
 
-  draw(title: string, desc: string): HTMLElement {
+  draw(title: string, desc: string, classToAdd: string): HTMLElement {
     const factory = createElement(CONSTANTS.factory);
     const img = createElement(CONSTANTS.factoryImg);
     const textContainer = createElement(CONSTANTS.factoryTextContainer);
@@ -50,6 +50,7 @@ class Factory {
     const upgradeBtn = createElement(CONSTANTS.factoryUpgradeBtn);
     const removebtn = createElement(CONSTANTS.factoryRemoveBtn);
 
+    factory.classList.add(`factory-${classToAdd}`);
     factoryTitle.innerText = title;
     description.innerText = desc;
     upgradeText.innerText += `${
