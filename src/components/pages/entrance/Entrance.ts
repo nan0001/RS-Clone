@@ -4,7 +4,6 @@ import { VIEW } from '../../../common/helpers/constants';
 import createElement from '../../../common/helpers/createElement';
 import { CONSTANTS } from './constants';
 import './entrance.scss';
-import GameBoard from '../gameBoard/GameBoard';
 import { changeLanguage } from './helpers';
 
 class Entrance {
@@ -21,7 +20,6 @@ class Entrance {
     btnContainer.append(registerBtn, guestBtn, aboutBtn);
     menu.append(title, btnContainer);
     entrance.append(bgImg, menu);
-    guestBtn.addEventListener('click', GameBoard.startGame); //TODO: REMOVE!!
 
     guestBtn.addEventListener('click', () => {
       store.dispatch(changeView(VIEW.cookie));

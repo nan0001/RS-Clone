@@ -7,6 +7,7 @@ import './app.scss';
 import Controls from '../../components/controls/Controls';
 import store from '../components/store/store';
 import { VIEW } from '../helpers/constants';
+import GameBoard from '../../components/pages/gameBoard/GameBoard';
 
 class App {
   static init(): void {
@@ -28,15 +29,21 @@ class App {
 
       switch (view) {
         case VIEW.cookie:
-          //тут подключить страницу игры
+          if (!page.classList.contains(CONSTANTS.pageSelectors.cookie)) {
+            appRoot.removeChild(page);
+            appRoot.append(GameBoard.draw());
+          }
+
           break;
         case VIEW.factory:
           //тут подключить страницу заводов
           break;
 
         default:
-          appRoot.removeChild(page);
-          appRoot.append(Entrance.draw());
+          if (!page.classList.contains(CONSTANTS.pageSelectors.entrance)) {
+            appRoot.removeChild(page);
+            appRoot.append(Entrance.draw());
+          }
 
           break;
       }

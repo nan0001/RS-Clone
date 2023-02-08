@@ -10,4 +10,8 @@ export const CONSTANTS = {
     tag: TAGS.main,
     classList: 'app-root',
   },
+  pageSelectors: {
+    entrance: 'entrance',
+    cookie: 'wrapper-game',
+  },
 };
