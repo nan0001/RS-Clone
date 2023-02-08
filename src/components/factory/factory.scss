@@ -1,0 +1,81 @@
+@import '../../common/styles/main.scss';
+
+.factory {
+  display: flex;
+  width: 100%;
+  padding: 2%;
+  height: 200px;
+  background-color: $cookie;
+  border-radius: 15px;
+  border: 2px solid $dark-red;
+  color: $dark-red;
+
+  .factory__img {
+    width: 30%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .factory__text-container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    padding: 0 3%;
+    justify-content: space-between;
+
+    .factory__title {
+      text-align: center;
+    }
+
+    .factory__description {
+      height: 60%;
+      padding: 3%;
+      background-color: $light-pink;
+      border: 1px solid $dark-red;
+      border-radius: 15px;
+    }
+
+    .factory__upgrade {
+      text-align: end;
+    }
+  }
+
+  .factory__buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 50px;
+    height: 100%;
+
+    .button {
+      border-radius: 15px;
+      background-color: transparent;
+      height: 50px;
+      border: none;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .factory__production {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      border: 2px solid $dark-red;
+      background-color: $light;
+      border-radius: 15px;
+    }
+
+    .button__remove {
+      background-image: url('../../common/assets/remove.png');
+    }
+
+    .button__upgrade {
+      background-image: url('../../common/assets/upgrade.png');
+    }
+  }
+}
