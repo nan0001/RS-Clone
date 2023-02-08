@@ -1,5 +1,10 @@
 @import '../../../common/styles/main';
 
+@font-face {
+  font-family: 'Weroth';
+  src: url('../../../common/styles/fonts/Weroth.otf') format('opentype');
+}
+
 .entrance {
   width: 100vw;
   height: 100vh;
@@ -21,7 +26,7 @@
 
     .entrance__title {
       position: relative;
-      font-family: $font-title;
+      font-family: 'Weroth', serif;
       font-size: 6em;
       color: $cookie;
       text-shadow: 2px 2px $dark-red, -2px -2px $dark-red, 2px -2px $dark-red,
@@ -50,7 +55,7 @@
 
         &:hover {
           box-shadow: inset 6px 6px $cookie;
-          background-color: #e9b68c;
+          background-color: $shadow-light-pink;
           font-size: 1.7em;
         }
       }
@@ -98,10 +103,10 @@
 
       .entrance__buttons {
         .button {
-          font-size: 1.2em;
+          font-size: 1.1em;
 
           &:hover {
-            font-size: 1.1em;
+            font-size: 1em;
           }
         }
       }

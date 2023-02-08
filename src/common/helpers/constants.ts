@@ -18,6 +18,9 @@ export const TAGS = {
   button: 'button',
   input: 'input',
   img: 'img',
+  ul: 'ul',
+  li: 'li',
+  main: 'main',
 };
 
 export const PRODUCTS = [
@@ -70,3 +73,13 @@ export const PRODUCTS = [
   //   dropChance: 1.8,
   // },
 ];
+export const LANG = {
+  ru: 'ru',
+  en: 'en',
+};
+
+export const VIEW = {
+  cookie: 'cookie',
+  factory: 'factory',
+  home: 'home',
+};

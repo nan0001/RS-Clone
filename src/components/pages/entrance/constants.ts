@@ -1,5 +1,5 @@
 import { TAGS } from '../../../common/helpers/constants';
-import cookieBg from '../../../common/assets/cookie_bg.png';
+import cookieBg from '../../../common/assets/images/cookie_bg.png';
 
 export const CONSTANTS = {
   entrance: {
@@ -41,4 +41,7 @@ export const CONSTANTS = {
     classList: ['button', 'button__about'],
     text: 'About the project',
   },
+  registerBtnRU: 'Регистрация',
+  guestBtnRU: 'Войти как гость',
+  aboutBtnRU: 'О проекте',
 };

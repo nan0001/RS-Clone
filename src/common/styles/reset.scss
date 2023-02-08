@@ -1,7 +1,6 @@
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
-  // font-family: $font-usual;
 }
 
 body {
@@ -41,4 +40,15 @@ img {
 ul,
 button {
   padding: 0;
+  margin: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
 }

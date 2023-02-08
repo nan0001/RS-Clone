@@ -1,4 +1,3 @@
-import './common/styles/reset.scss';
-import Entrance from './components/pages/entrance/Entrance';
+import App from './common/app/App';
 
-document.body.append(Entrance.draw());
+App.init();
