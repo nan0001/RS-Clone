@@ -1,6 +1,6 @@
-import { increaseCookiesCount } from '../../common/components/store/reducers/cookiesCount';
-import store from '../../common/components/store/store';
-import createElement from '../../common/helpers/createElement';
+import { increaseCookiesCount } from '../store/reducers/cookiesCount';
+import store from '../store/store';
+import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
 import './factory.scss';
 

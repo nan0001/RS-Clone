@@ -1,4 +1,4 @@
-import { TAGS } from '../../common/helpers/constants';
+import { TAGS } from '../../helpers/constants';
 
 export const CONSTANTS = {
   factory: {

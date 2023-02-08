@@ -1,4 +1,4 @@
-import Factory from '../factory/Factory';
+import Factory from '../../common/components/factory/Factory';
 import { CONSTANTS } from './constants';
 import './smallFactory.scss';
 
