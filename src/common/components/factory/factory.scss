@@ -1,4 +1,4 @@
-@import '../../common/styles/main.scss';
+@import '../../styles/main.scss';
 
 .factory {
   display: flex;
@@ -71,11 +71,11 @@
     }
 
     .button__remove {
-      background-image: url('../../common/assets/remove.png');
+      background-image: url('../../assets/images/remove.png');
     }
 
     .button__upgrade {
-      background-image: url('../../common/assets/upgrade.png');
+      background-image: url('../../assets/images/upgrade.png');
     }
   }
 }
