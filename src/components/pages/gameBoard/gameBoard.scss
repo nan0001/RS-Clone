@@ -1,0 +1,51 @@
+@import '../../../common/styles/main';
+
+.wrapper-game {
+  background-color: $light;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .game {
+    flex: 1 1 auto;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
+    &-field {
+      flex-grow: 1;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(
+        to right,
+        $deep-pink,
+        $light,
+        $light,
+        $deep-pink
+      );
+      padding: 1% 3%;
+
+      &__total-cost {
+        position: absolute;
+        padding: 0.2% 3%;
+        right: 1%;
+        font-size: 3rem;
+        font-weight: bold;
+        background-color: $light;
+        border-radius: 15px;
+        border: 2px solid $dark-red;
+        color: $dark-red;
+        z-index: 1;
+        min-width: 10rem;
+      }
+    }
+  }
+
+  .game-boosters {
+    width: 100%;
+    height: 5rem;
+    background-color: $light-pink;
+    position: relative;
+    z-index: 1;
+  }
+}

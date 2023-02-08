@@ -1,4 +1,3 @@
-
 name: Lint Tests 🙌
 on:
   pull_request:
