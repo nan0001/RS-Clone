@@ -76,6 +76,11 @@
 
     .button__upgrade {
       background-image: url('../../assets/images/upgrade.png');
+
+      &:disabled {
+        filter: grayscale(100%);
+        cursor: not-allowed;
+      }
     }
   }
 }

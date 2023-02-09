@@ -5,4 +5,24 @@ export const CONSTANTS = {
     tag: TAGS.section,
     classList: 'factory-pg',
   },
+  factoryContainer: {
+    tag: TAGS.div,
+    classList: 'factory-pg__container',
+  },
+  factoryPgTitle: {
+    tag: TAGS.h1,
+    classList: 'factory-pg__title',
+  },
+  factoryPgTitleText: {
+    en: 'Your factories',
+    ru: 'Ваши заводы',
+  },
+  factoryPgCookieCount: {
+    tag: TAGS.p,
+    classList: 'factory-pg__cookie-count',
+  },
+  factoryCatalogueBtn: {
+    tag: TAGS.button,
+    classList: ['button', 'button__catalogue'],
+  },
 };
