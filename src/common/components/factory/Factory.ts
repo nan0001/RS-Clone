@@ -3,13 +3,14 @@ import store, { RootState } from '../store/store';
 import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
 import './factory.scss';
-import { LANG } from '../../helpers/constants';
+import { changeLangFactory, upgradeBtnHandler } from './helpers';
+import { FactoryDesc, FactoryTitle } from '../../helpers/types';
 
 class Factory {
-  protected cookieProduction: number;
-  protected maxLevel: number;
-  protected currentLevel: number;
-  protected upgradeMultiplier: number;
+  public cookieProduction: number;
+  public maxLevel: number;
+  public currentLevel: number;
+  public upgradeMultiplier: number;
   protected timer: ReturnType<typeof setInterval> | undefined;
 
   constructor(cookieProduction: number) {
@@ -40,8 +41,8 @@ class Factory {
   }
 
   draw(
-    title: { titleEN: string; titleRU: string },
-    desc: { descriptionEN: string; descriptionRU: string },
+    title: FactoryTitle,
+    desc: FactoryDesc,
     classToAdd: string,
   ): HTMLElement {
     const factory = createElement(CONSTANTS.factory);
@@ -54,58 +55,37 @@ class Factory {
     const factoryProduction = createElement(CONSTANTS.factoryProduction);
     const upgradeBtn = createElement(CONSTANTS.factoryUpgradeBtn);
     const removebtn = createElement(CONSTANTS.factoryRemoveBtn);
+    const elemsChangingLang = { factoryTitle, description, upgradeText };
 
-    factory.classList.add(`factory-${classToAdd}`);
+    factory.classList.add(CONSTANTS.additionalFactoryClass(classToAdd));
+    factoryProduction.innerText = `${this.cookieProduction}`;
 
-    if (store.getState().lang.lang === LANG.en) {
-      factoryTitle.innerText = title.titleEN;
-      description.innerText = desc.descriptionEN;
-      upgradeText.innerText += `${
-        this.cookieProduction * this.upgradeMultiplier
-      } cookies`;
-    } else {
-      factoryTitle.innerText = title.titleRU;
-      description.innerText = desc.descriptionRU;
-      upgradeText.innerText =
-        CONSTANTS.upgradeTextRU +
-        `${this.cookieProduction * this.upgradeMultiplier} печенек`;
-    }
+    changeLangFactory(
+      store.getState(),
+      elemsChangingLang,
+      title,
+      desc,
+      this.currentLevel === this.maxLevel
+        ? undefined
+        : Math.round(this.cookieProduction * this.upgradeMultiplier),
+    );
 
     store.subscribe(() => {
       const state: RootState = store.getState();
-      const lang = state.lang.lang;
 
-      if (lang === LANG.ru) {
-        factoryTitle.innerText = title.titleRU;
-        description.innerText = desc.descriptionRU;
-        upgradeText.innerText =
-          CONSTANTS.upgradeTextRU +
-          `${this.cookieProduction * this.upgradeMultiplier} печенек`;
-      } else {
-        factoryTitle.innerText = title.titleEN;
-        description.innerText = desc.descriptionEN;
-        upgradeText.innerText += `${
-          this.cookieProduction * this.upgradeMultiplier
-        } cookies`;
-      }
+      changeLangFactory(
+        state,
+        elemsChangingLang,
+        title,
+        desc,
+        this.currentLevel === this.maxLevel
+          ? undefined
+          : Math.round(this.cookieProduction * this.upgradeMultiplier),
+      );
     });
 
-    factoryProduction.innerText = `${this.cookieProduction}`;
-
     upgradeBtn.addEventListener('click', () => {
-      this.upgrade();
-
-      if (this.currentLevel === this.maxLevel) {
-        upgradeBtn.setAttribute('disabled', '');
-        upgradeText.innerText = 'Max upgrade level reached';
-      } else {
-        upgradeText.innerText =
-          CONSTANTS.upgradeText.text +
-          `${Math.round(
-            this.cookieProduction * this.upgradeMultiplier,
-          )} cookies`;
-      }
-
+      upgradeBtnHandler(this, upgradeBtn, upgradeText);
       factoryProduction.innerText = `${this.cookieProduction}`;
     });
 
