@@ -57,7 +57,10 @@ export const CONSTANTS = {
   buyBtn: {
     tag: TAGS.button,
     classList: ['button', 'button__buy-factory'],
-    text: 'BUY',
+  },
+  buyBtnText: {
+    en: 'BUY',
+    ru: 'КУПИТЬ',
   },
   classForCatalogue: 'catalogue__factory',
 };

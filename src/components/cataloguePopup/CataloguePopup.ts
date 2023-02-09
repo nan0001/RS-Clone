@@ -5,10 +5,16 @@ import { CONSTANTS } from './constants';
 import './cataloguePopup.scss';
 import MediumFactory from '../mediumFactory/MediumFactory';
 import LargeFactory from '../largeFactory/LargeFactory';
+import store from '../../common/components/store/store';
+import { LANG } from '../../common/helpers/constants';
 
 class CataloguePopup extends Popup {
   constructor() {
-    super('Factory catalogue');
+    super(
+      store.getState().lang.lang === LANG.en
+        ? CONSTANTS.title.en
+        : CONSTANTS.title.ru,
+    );
   }
 
   draw(): HTMLElement[] {

@@ -1,5 +1,4 @@
 import { LANG } from '../../helpers/constants';
-import createElement from '../../helpers/createElement';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
 import { buyFactory } from '../store/reducers/factories';
 import store, { RootState } from '../store/store';
@@ -12,6 +11,7 @@ export function insertElemsText(
     factoryTitle?: HTMLElement;
     description?: HTMLElement;
     upgradeText?: HTMLElement;
+    buyBtn?: HTMLElement;
   },
   title?: FactoryTitle,
   desc?: FactoryDesc,
@@ -32,6 +32,10 @@ export function insertElemsText(
     } else if (elems.upgradeText && !amountAfterUpgrade) {
       elems.upgradeText.innerText = CONSTANTS.maxUpgrade.en;
     }
+
+    if (elems.buyBtn) {
+      elems.buyBtn.innerText = CONSTANTS.buyBtnText.en;
+    }
   } else {
     if (elems.factoryTitle && title) {
       elems.factoryTitle.innerText = title.titleRU;
@@ -46,6 +50,10 @@ export function insertElemsText(
         CONSTANTS.upgradeTextRUHandler(amountAfterUpgrade);
     } else if (elems.upgradeText && !amountAfterUpgrade) {
       elems.upgradeText.innerText = CONSTANTS.maxUpgrade.ru;
+    }
+
+    if (elems.buyBtn) {
+      elems.buyBtn.innerText = CONSTANTS.buyBtnText.ru;
     }
   }
 }
@@ -78,10 +86,9 @@ export function drawForCatalogue(
   factoryTitle: HTMLElement,
   img: HTMLElement,
   description: HTMLElement,
+  buyBtn: HTMLElement,
   classToAdd: string,
 ): void {
-  const buyBtn = createElement(CONSTANTS.buyBtn);
-
   buyBtn.addEventListener('click', () => {
     store.dispatch(buyFactory(classToAdd));
   });

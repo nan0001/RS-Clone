@@ -20,6 +20,13 @@
     background-color: $light-pink;
     border-radius: 15px;
     border: 2px solid $dark-red;
+
+    .factory-pg__placeholder {
+      text-align: center;
+      color: $dark-red;
+      font-size: 1.5em;
+      margin-top: 25%;
+    }
   }
 
   .factory-pg__title {

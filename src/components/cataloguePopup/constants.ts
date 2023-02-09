@@ -5,4 +5,8 @@ export const CONSTANTS = {
     tag: TAGS.div,
     classList: 'popup__body',
   },
+  title: {
+    ru: 'Каталог заводов',
+    en: 'Factory catalogue',
+  },
 };

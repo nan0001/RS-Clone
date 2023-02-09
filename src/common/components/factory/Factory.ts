@@ -61,7 +61,13 @@ class Factory {
     const factoryProduction = createElement(CONSTANTS.factoryProduction);
     const upgradeBtn = createElement(CONSTANTS.factoryUpgradeBtn);
     const removebtn = createElement(CONSTANTS.factoryRemoveBtn);
-    const elemsChangingLang = { factoryTitle, description, upgradeText };
+    const buyBtn = createElement(CONSTANTS.buyBtn);
+    const elemsChangingLang = {
+      factoryTitle,
+      description,
+      upgradeText,
+      buyBtn,
+    };
 
     factory.classList.add(CONSTANTS.additionalFactoryClass(classToAdd));
     factoryProduction.innerText = `${this.cookieProduction}`;
@@ -100,12 +106,19 @@ class Factory {
 
     removebtn.addEventListener('click', () => {
       this.stopProduction();
-      store.dispatch(removeFactory(classToAdd));
       factory.remove();
+      store.dispatch(removeFactory(classToAdd));
     });
 
     if (isForCatalogue) {
-      drawForCatalogue(factory, factoryTitle, img, description, classToAdd);
+      drawForCatalogue(
+        factory,
+        factoryTitle,
+        img,
+        description,
+        buyBtn,
+        classToAdd,
+      );
     } else {
       textContainer.append(factoryTitle, description, upgradeText);
       btnsContainer.append(factoryProduction, removebtn, upgradeBtn);
