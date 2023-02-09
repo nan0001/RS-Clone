@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cookiesCount from './reducers/cookiesCount';
 import fallingItems from './reducers/fallingItems';
+import factories from './reducers/factories';
 import lang from './reducers/lang';
 import view from './reducers/view';
 
@@ -10,6 +11,7 @@ const store = configureStore({
     lang: lang,
     view: view,
     fallingItems: fallingItems,
+    factories: factories,
   },
 });
 

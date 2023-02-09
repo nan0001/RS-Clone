@@ -9,6 +9,10 @@ export const CONSTANTS = {
     tag: TAGS.div,
     classList: 'factory-pg__container',
   },
+  factoryContainerText: {
+    ru: 'Перейдите в каталог, чтобы купить ваш первый завод',
+    en: 'Enter the catalogue to buy your first factory',
+  },
   factoryPgTitle: {
     tag: TAGS.h1,
     classList: 'factory-pg__title',

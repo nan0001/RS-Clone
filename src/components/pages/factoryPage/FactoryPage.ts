@@ -18,6 +18,26 @@ class FactoryPage {
     const mediumFactory = new MediumFactory().draw();
     const largeFactory = new LargeFactory().draw();
 
+    if (store.getState().factories.factoryS.bought) {
+      factoryContainer.append(smallFactory);
+    }
+
+    if (store.getState().factories.factoryM.bought) {
+      factoryContainer.append(mediumFactory);
+    }
+
+    if (store.getState().factories.factoryL.bought) {
+      factoryContainer.append(largeFactory);
+    }
+
+    if (!factoryContainer.hasChildNodes()) {
+      if (store.getState().lang.lang === LANG.en) {
+        factoryContainer.append(CONSTANTS.factoryContainerText.en);
+      } else {
+        factoryContainer.append(CONSTANTS.factoryContainerText.ru);
+      }
+    }
+
     factoryPgTitle.innerText =
       store.getState().lang.lang === LANG.en
         ? CONSTANTS.factoryPgTitleText.en
@@ -34,7 +54,6 @@ class FactoryPage {
       cookieCount.innerText = `${state.cookies.count}`;
     });
 
-    factoryContainer.append(smallFactory, mediumFactory, largeFactory);
     factoryPg.append(
       factoryPgTitle,
       factoryContainer,
