@@ -84,3 +84,19 @@
     }
   }
 }
+
+.catalogue__factory {
+  flex-direction: column;
+  height: 80%;
+  width: 32%;
+  justify-content: space-between;
+
+  .factory__title {
+    text-align: center;
+  }
+
+  .factory__img {
+    width: 100%;
+    height: 40%;
+  }
+}

@@ -5,6 +5,7 @@ import { CONSTANTS } from './constants';
 import './factory.scss';
 import { changeLangFactory, upgradeBtnHandler } from './helpers';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
+import { buyFactory, removeFactory } from '../store/reducers/factories';
 
 class Factory {
   public cookieProduction: number;
@@ -44,6 +45,7 @@ class Factory {
     title: FactoryTitle,
     desc: FactoryDesc,
     classToAdd: string,
+    isForCatalogue = false,
   ): HTMLElement {
     const factory = createElement(CONSTANTS.factory);
     const img = createElement(CONSTANTS.factoryImg);
@@ -91,12 +93,24 @@ class Factory {
 
     removebtn.addEventListener('click', () => {
       this.stopProduction();
+      store.dispatch(removeFactory(classToAdd));
       factory.remove();
     });
 
-    textContainer.append(factoryTitle, description, upgradeText);
-    btnsContainer.append(factoryProduction, removebtn, upgradeBtn);
-    factory.append(img, textContainer, btnsContainer);
+    if (isForCatalogue) {
+      const buyBtn = createElement(CONSTANTS.buyBtn);
+
+      buyBtn.addEventListener('click', () => {
+        store.dispatch(buyFactory(classToAdd));
+      });
+
+      factory.classList.add('catalogue__factory');
+      factory.append(factoryTitle, img, description, buyBtn);
+    } else {
+      textContainer.append(factoryTitle, description, upgradeText);
+      btnsContainer.append(factoryProduction, removebtn, upgradeBtn);
+      factory.append(img, textContainer, btnsContainer);
+    }
 
     return factory;
   }

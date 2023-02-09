@@ -19,6 +19,17 @@ class MediumFactory extends Factory {
 
     return factory;
   }
+
+  drawForCatalogue(): HTMLElement {
+    const factory = super.draw(
+      this.title,
+      this.description,
+      FACTORY_TYPES.m,
+      true,
+    );
+
+    return factory;
+  }
 }
 
 export default MediumFactory;

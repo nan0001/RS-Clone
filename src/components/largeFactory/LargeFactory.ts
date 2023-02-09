@@ -19,6 +19,17 @@ class LargeFactory extends Factory {
 
     return factory;
   }
+
+  drawForCatalogue(): HTMLElement {
+    const factory = super.draw(
+      this.title,
+      this.description,
+      FACTORY_TYPES.l,
+      true,
+    );
+
+    return factory;
+  }
 }
 
 export default LargeFactory;

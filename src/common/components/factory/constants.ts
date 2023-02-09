@@ -54,4 +54,9 @@ export const CONSTANTS = {
     tag: TAGS.button,
     classList: ['button', 'button__upgrade'],
   },
+  buyBtn: {
+    tag: TAGS.button,
+    classList: ['button', 'button__buy-factory'],
+    text: 'BUY',
+  },
 };
