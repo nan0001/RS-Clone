@@ -4,8 +4,8 @@ import { CONSTANTS } from './constants';
 import './largeFactory.scss';
 
 class LargeFactory extends Factory {
-  protected title: string;
-  protected description: string;
+  protected title: { titleEN: string; titleRU: string };
+  protected description: { descriptionEN: string; descriptionRU: string };
 
   constructor() {
     super(CONSTANTS.cookieProduction);

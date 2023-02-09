@@ -26,6 +26,7 @@ export const CONSTANTS = {
     classList: 'factory__upgrade',
     text: 'Next upgrade will increase production to ',
   },
+  upgradeTextRU: 'Следующее повышение уровня увеличит производство до ',
   btnsContainer: {
     tag: TAGS.div,
     classList: 'factory__buttons',

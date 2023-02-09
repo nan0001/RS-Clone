@@ -1,8 +1,9 @@
 import { increaseCookiesCount } from '../store/reducers/cookiesCount';
-import store from '../store/store';
+import store, { RootState } from '../store/store';
 import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
 import './factory.scss';
+import { LANG } from '../../helpers/constants';
 
 class Factory {
   protected cookieProduction: number;
@@ -38,7 +39,11 @@ class Factory {
     }
   }
 
-  draw(title: string, desc: string, classToAdd: string): HTMLElement {
+  draw(
+    title: { titleEN: string; titleRU: string },
+    desc: { descriptionEN: string; descriptionRU: string },
+    classToAdd: string,
+  ): HTMLElement {
     const factory = createElement(CONSTANTS.factory);
     const img = createElement(CONSTANTS.factoryImg);
     const textContainer = createElement(CONSTANTS.factoryTextContainer);
@@ -51,11 +56,40 @@ class Factory {
     const removebtn = createElement(CONSTANTS.factoryRemoveBtn);
 
     factory.classList.add(`factory-${classToAdd}`);
-    factoryTitle.innerText = title;
-    description.innerText = desc;
-    upgradeText.innerText += `${
-      this.cookieProduction * this.upgradeMultiplier
-    } cookies`;
+
+    if (store.getState().lang.lang === LANG.en) {
+      factoryTitle.innerText = title.titleEN;
+      description.innerText = desc.descriptionEN;
+      upgradeText.innerText += `${
+        this.cookieProduction * this.upgradeMultiplier
+      } cookies`;
+    } else {
+      factoryTitle.innerText = title.titleRU;
+      description.innerText = desc.descriptionRU;
+      upgradeText.innerText =
+        CONSTANTS.upgradeTextRU +
+        `${this.cookieProduction * this.upgradeMultiplier} печенек`;
+    }
+
+    store.subscribe(() => {
+      const state: RootState = store.getState();
+      const lang = state.lang.lang;
+
+      if (lang === LANG.ru) {
+        factoryTitle.innerText = title.titleRU;
+        description.innerText = desc.descriptionRU;
+        upgradeText.innerText =
+          CONSTANTS.upgradeTextRU +
+          `${this.cookieProduction * this.upgradeMultiplier} печенек`;
+      } else {
+        factoryTitle.innerText = title.titleEN;
+        description.innerText = desc.descriptionEN;
+        upgradeText.innerText += `${
+          this.cookieProduction * this.upgradeMultiplier
+        } cookies`;
+      }
+    });
+
     factoryProduction.innerText = `${this.cookieProduction}`;
 
     upgradeBtn.addEventListener('click', () => {
