@@ -59,4 +59,5 @@ export const CONSTANTS = {
     classList: ['button', 'button__buy-factory'],
     text: 'BUY',
   },
+  classForCatalogue: 'catalogue__factory',
 };

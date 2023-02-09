@@ -1,11 +1,15 @@
 import { increaseCookiesCount } from '../store/reducers/cookiesCount';
-import store, { RootState } from '../store/store';
+import store from '../store/store';
 import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
 import './factory.scss';
-import { changeLangFactory, upgradeBtnHandler } from './helpers';
+import {
+  drawForCatalogue,
+  insertElemsText,
+  upgradeBtnHandler,
+} from './helpers';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
-import { buyFactory, removeFactory } from '../store/reducers/factories';
+import { removeFactory, upgradeFactory } from '../store/reducers/factories';
 
 class Factory {
   public cookieProduction: number;
@@ -62,7 +66,11 @@ class Factory {
     factory.classList.add(CONSTANTS.additionalFactoryClass(classToAdd));
     factoryProduction.innerText = `${this.cookieProduction}`;
 
-    changeLangFactory(
+    if (this.currentLevel === this.maxLevel) {
+      upgradeBtn.setAttribute('disabled', '');
+    }
+
+    insertElemsText(
       store.getState(),
       elemsChangingLang,
       title,
@@ -73,10 +81,8 @@ class Factory {
     );
 
     store.subscribe(() => {
-      const state: RootState = store.getState();
-
-      changeLangFactory(
-        state,
+      insertElemsText(
+        store.getState(),
         elemsChangingLang,
         title,
         desc,
@@ -89,6 +95,7 @@ class Factory {
     upgradeBtn.addEventListener('click', () => {
       upgradeBtnHandler(this, upgradeBtn, upgradeText);
       factoryProduction.innerText = `${this.cookieProduction}`;
+      store.dispatch(upgradeFactory(classToAdd));
     });
 
     removebtn.addEventListener('click', () => {
@@ -98,14 +105,7 @@ class Factory {
     });
 
     if (isForCatalogue) {
-      const buyBtn = createElement(CONSTANTS.buyBtn);
-
-      buyBtn.addEventListener('click', () => {
-        store.dispatch(buyFactory(classToAdd));
-      });
-
-      factory.classList.add('catalogue__factory');
-      factory.append(factoryTitle, img, description, buyBtn);
+      drawForCatalogue(factory, factoryTitle, img, description, classToAdd);
     } else {
       textContainer.append(factoryTitle, description, upgradeText);
       btnsContainer.append(factoryProduction, removebtn, upgradeBtn);

@@ -42,6 +42,9 @@ export function addFactoriesFromStore(
     !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.s) &&
     state.factories.factoryS.bought
   ) {
+    factories.smallFactory.currentLevel = state.factories.factoryS.level;
+    factories.smallFactory.cookieProduction =
+      factories.smallFactory.initProduction;
     appendFactory(factoryContainer, factories.smallFactory, placeholder);
   }
 
@@ -49,6 +52,9 @@ export function addFactoriesFromStore(
     !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.m) &&
     state.factories.factoryM.bought
   ) {
+    factories.mediumFactory.currentLevel = state.factories.factoryM.level;
+    factories.mediumFactory.cookieProduction =
+      factories.mediumFactory.initProduction;
     appendFactory(factoryContainer, factories.mediumFactory, placeholder);
   }
 
@@ -56,6 +62,9 @@ export function addFactoriesFromStore(
     !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.l) &&
     state.factories.factoryL.bought
   ) {
+    factories.largeFactory.currentLevel = state.factories.factoryL.level;
+    factories.largeFactory.cookieProduction =
+      factories.largeFactory.initProduction;
     appendFactory(factoryContainer, factories.largeFactory, placeholder);
   }
 

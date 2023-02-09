@@ -5,11 +5,13 @@ import { CONSTANTS } from './constants';
 import './largeFactory.scss';
 
 class LargeFactory extends Factory {
+  public initProduction: number;
   protected title: FactoryTitle;
   protected description: FactoryDesc;
 
   constructor() {
     super(CONSTANTS.cookieProduction);
+    this.initProduction = CONSTANTS.cookieProduction;
     this.title = CONSTANTS.title;
     this.description = CONSTANTS.description;
   }

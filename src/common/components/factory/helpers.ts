@@ -1,10 +1,12 @@
 import { LANG } from '../../helpers/constants';
+import createElement from '../../helpers/createElement';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
+import { buyFactory } from '../store/reducers/factories';
 import store, { RootState } from '../store/store';
 import { CONSTANTS } from './constants';
 import Factory from './Factory';
 
-export function changeLangFactory(
+export function insertElemsText(
   state: RootState,
   elems: {
     factoryTitle?: HTMLElement;
@@ -59,9 +61,9 @@ export function upgradeBtnHandler(
 
   if (factory.currentLevel === factory.maxLevel) {
     upgradeBtn.setAttribute('disabled', '');
-    changeLangFactory(state, { upgradeText });
+    insertElemsText(state, { upgradeText });
   } else {
-    changeLangFactory(
+    insertElemsText(
       state,
       { upgradeText },
       undefined,
@@ -69,4 +71,21 @@ export function upgradeBtnHandler(
       Math.round(factory.cookieProduction * factory.upgradeMultiplier),
     );
   }
+}
+
+export function drawForCatalogue(
+  factory: HTMLElement,
+  factoryTitle: HTMLElement,
+  img: HTMLElement,
+  description: HTMLElement,
+  classToAdd: string,
+): void {
+  const buyBtn = createElement(CONSTANTS.buyBtn);
+
+  buyBtn.addEventListener('click', () => {
+    store.dispatch(buyFactory(classToAdd));
+  });
+
+  factory.classList.add(CONSTANTS.classForCatalogue);
+  factory.append(factoryTitle, img, description, buyBtn);
 }
