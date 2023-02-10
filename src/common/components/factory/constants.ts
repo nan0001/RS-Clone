@@ -62,5 +62,6 @@ export const CONSTANTS = {
     en: 'BUY',
     ru: 'КУПИТЬ',
   },
+  buyBtnBoughtClass: 'bought',
   classForCatalogue: 'catalogue__factory',
 };

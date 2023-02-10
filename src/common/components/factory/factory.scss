@@ -119,6 +119,16 @@
       &:hover {
         transform: none;
       }
+
+      &.bought {
+        filter: none;
+        cursor: default;
+        background-color: transparent;
+        background-image: url('../../assets/images/check.png');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
   }
 }
