@@ -11,7 +11,6 @@ function appendFactory(
   placeholderCont: HTMLElement,
 ): void {
   placeholderCont.remove();
-  factory.product();
   elemToAppend.append(factory.draw());
 }
 

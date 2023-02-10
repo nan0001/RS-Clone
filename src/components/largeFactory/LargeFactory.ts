@@ -1,4 +1,6 @@
 import Factory from '../../common/components/factory/Factory';
+import { increaseCookiesCount } from '../../common/components/store/reducers/cookiesCount';
+import store from '../../common/components/store/store';
 import { FACTORIES, FACTORY_TYPES } from '../../common/helpers/constants';
 import { FactoryDesc, FactoryTitle } from '../../common/helpers/types';
 import './largeFactory.scss';
@@ -8,8 +10,14 @@ class LargeFactory extends Factory {
   protected title: FactoryTitle;
   protected description: FactoryDesc;
 
+  static timer: ReturnType<typeof setInterval> | undefined = undefined;
+
   constructor() {
-    super(FACTORIES.large.production);
+    super(
+      FACTORIES.large.production,
+      FACTORIES.large.price,
+      FACTORIES.large.upgradePrice,
+    );
     this.initProduction = FACTORIES.large.production;
     this.title = FACTORIES.large.title;
     this.description = FACTORIES.large.description;
@@ -30,6 +38,16 @@ class LargeFactory extends Factory {
     );
 
     return factory;
+  }
+
+  product(): void {
+    LargeFactory.timer = setInterval(() => {
+      store.dispatch(increaseCookiesCount(this.cookieProduction));
+    }, 1000);
+  }
+
+  stopProduction(): void {
+    clearInterval(LargeFactory.timer);
   }
 }
 

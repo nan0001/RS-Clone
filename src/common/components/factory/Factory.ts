@@ -3,38 +3,42 @@ import store from '../store/store';
 import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
 import './factory.scss';
-import {
-  disableBuyBtn,
-  drawForCatalogue,
-  insertElemsText,
-  upgradeBtnHandler,
-} from './helpers';
+import { disableBuyBtn, insertElemsText, upgradeBtnHandler } from './helpers';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
-import { removeFactory, upgradeFactory } from '../store/reducers/factories';
+import {
+  buyFactory,
+  removeFactory,
+  upgradeFactory,
+} from '../store/reducers/factories';
 
 class Factory {
   public cookieProduction: number;
   public maxLevel: number;
   public currentLevel: number;
   public upgradeMultiplier: number;
-  protected timer: ReturnType<typeof setInterval> | undefined;
+  public price: number;
+  public upgradePrice: number;
+  // protected timer: ReturnType<typeof setInterval> | undefined;
+  static timer: ReturnType<typeof setInterval> | undefined = undefined;
 
-  constructor(cookieProduction: number) {
+  constructor(cookieProduction: number, price: number, upgradePrice: number) {
     this.cookieProduction = cookieProduction;
     this.maxLevel = 10;
     this.currentLevel = 1;
     this.upgradeMultiplier = 1.2;
-    this.timer = undefined;
+    this.price = price;
+    this.upgradePrice = upgradePrice;
+    // this.timer = undefined;
   }
 
   product(): void {
-    this.timer = setInterval(() => {
+    Factory.timer = setInterval(() => {
       store.dispatch(increaseCookiesCount(this.cookieProduction));
     }, 1000);
   }
 
   stopProduction(): void {
-    clearInterval(this.timer);
+    clearInterval(Factory.timer);
   }
 
   upgrade(): void {
@@ -98,7 +102,7 @@ class Factory {
           : Math.round(this.cookieProduction * this.upgradeMultiplier),
       );
 
-      disableBuyBtn(buyBtn, classToAdd);
+      disableBuyBtn(buyBtn, classToAdd, this.price);
     });
 
     upgradeBtn.addEventListener('click', () => {
@@ -107,21 +111,21 @@ class Factory {
       store.dispatch(upgradeFactory(classToAdd));
     });
 
+    buyBtn.addEventListener('click', () => {
+      store.dispatch(buyFactory(classToAdd));
+      this.product();
+    });
+
     removebtn.addEventListener('click', () => {
+      store.dispatch(removeFactory(classToAdd));
       this.stopProduction();
       factory.remove();
-      store.dispatch(removeFactory(classToAdd));
     });
 
     if (isForCatalogue) {
-      drawForCatalogue(
-        factory,
-        factoryTitle,
-        img,
-        description,
-        buyBtn,
-        classToAdd,
-      );
+      disableBuyBtn(buyBtn, classToAdd, this.price);
+      factory.classList.add(CONSTANTS.classForCatalogue);
+      factory.append(factoryTitle, img, description, buyBtn);
     } else {
       textContainer.append(factoryTitle, description, upgradeText);
       btnsContainer.append(factoryProduction, removebtn, upgradeBtn);

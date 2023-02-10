@@ -1,6 +1,5 @@
 import { FACTORY_TYPES, LANG } from '../../helpers/constants';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
-import { buyFactory } from '../store/reducers/factories';
 import store, { RootState } from '../store/store';
 import { CONSTANTS } from './constants';
 import Factory from './Factory';
@@ -81,40 +80,44 @@ export function upgradeBtnHandler(
   }
 }
 
-export function disableBuyBtn(buyBtn: HTMLElement, classToAdd: string): void {
+export function disableBuyBtn(
+  buyBtn: HTMLElement,
+  classToAdd: string,
+  price: number,
+): void {
   if (classToAdd === FACTORY_TYPES.s) {
     if (store.getState().factories.factoryS.bought) {
+      buyBtn.classList.add(CONSTANTS.buyBtnBoughtClass);
+      buyBtn.innerText = '';
+      buyBtn.setAttribute('disabled', '');
+    }
+
+    if (store.getState().cookies.count < price) {
       buyBtn.setAttribute('disabled', '');
     }
   }
 
   if (classToAdd === FACTORY_TYPES.m) {
     if (store.getState().factories.factoryM.bought) {
+      buyBtn.classList.add(CONSTANTS.buyBtnBoughtClass);
+      buyBtn.innerText = '';
+      buyBtn.setAttribute('disabled', '');
+    }
+
+    if (store.getState().cookies.count < price) {
       buyBtn.setAttribute('disabled', '');
     }
   }
 
   if (classToAdd === FACTORY_TYPES.l) {
     if (store.getState().factories.factoryL.bought) {
+      buyBtn.classList.add(CONSTANTS.buyBtnBoughtClass);
+      buyBtn.innerText = '';
+      buyBtn.setAttribute('disabled', '');
+    }
+
+    if (store.getState().cookies.count < price) {
       buyBtn.setAttribute('disabled', '');
     }
   }
-}
-
-export function drawForCatalogue(
-  factory: HTMLElement,
-  factoryTitle: HTMLElement,
-  img: HTMLElement,
-  description: HTMLElement,
-  buyBtn: HTMLElement,
-  classToAdd: string,
-): void {
-  disableBuyBtn(buyBtn, classToAdd);
-
-  buyBtn.addEventListener('click', () => {
-    store.dispatch(buyFactory(classToAdd));
-  });
-
-  factory.classList.add(CONSTANTS.classForCatalogue);
-  factory.append(factoryTitle, img, description, buyBtn);
 }
