@@ -1,7 +1,6 @@
 import Factory from '../../common/components/factory/Factory';
-import { FACTORY_TYPES } from '../../common/helpers/constants';
+import { FACTORIES, FACTORY_TYPES } from '../../common/helpers/constants';
 import { FactoryDesc, FactoryTitle } from '../../common/helpers/types';
-import { CONSTANTS } from './constants';
 import './smallFactory.scss';
 
 class SmallFactory extends Factory {
@@ -10,10 +9,10 @@ class SmallFactory extends Factory {
   protected description: FactoryDesc;
 
   constructor() {
-    super(CONSTANTS.cookieProduction);
-    this.initProduction = CONSTANTS.cookieProduction;
-    this.title = CONSTANTS.title;
-    this.description = CONSTANTS.description;
+    super(FACTORIES.small.production);
+    this.initProduction = FACTORIES.small.production;
+    this.title = FACTORIES.small.title;
+    this.description = FACTORIES.small.description;
   }
 
   draw(): HTMLElement {
