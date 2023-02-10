@@ -26,6 +26,10 @@
       color: $dark-red;
       font-size: 1.5em;
       margin-top: 25%;
+
+      .button__catalogue {
+        position: static;
+      }
     }
   }
 

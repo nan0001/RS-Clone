@@ -15,6 +15,8 @@ class FactoryPage {
     const factoryPgTitle = createElement(CONSTANTS.factoryPgTitle);
     const cookieCount = createElement(CONSTANTS.factoryPgCookieCount);
     const catalogueBtn = createElement(CONSTANTS.factoryCatalogueBtn);
+    const catalogueBtnClone = catalogueBtn.cloneNode(true);
+    const placeholderCont = createElement(CONSTANTS.placeholderCont);
     const placeholder = createElement(CONSTANTS.placeholder);
     const smallFactory = new SmallFactory();
     const mediumFactory = new MediumFactory();
@@ -28,7 +30,7 @@ class FactoryPage {
       store.getState(),
       factoryContainer,
       factories,
-      placeholder,
+      placeholderCont,
     );
 
     store.subscribe(() => {
@@ -37,13 +39,17 @@ class FactoryPage {
         store.getState(),
         factoryContainer,
         factories,
-        placeholder,
+        placeholderCont,
       );
       cookieCount.innerText = `${store.getState().cookies.count}`;
     });
 
-    catalogueBtn.addEventListener('click', () => {
-      factoryPg.append(...new CataloguePopup().draw());
+    placeholderCont.append(placeholder, catalogueBtnClone);
+
+    [catalogueBtn, catalogueBtnClone].forEach((el) => {
+      el.addEventListener('click', () => {
+        factoryPg.append(...new CataloguePopup().draw());
+      });
     });
 
     factoryPg.append(

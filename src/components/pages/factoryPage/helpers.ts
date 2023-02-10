@@ -8,9 +8,9 @@ import { CONSTANTS } from './constants';
 function appendFactory(
   elemToAppend: HTMLElement,
   factory: SmallFactory | MediumFactory | LargeFactory,
-  placeholder: HTMLElement,
+  placeholderCont: HTMLElement,
 ): void {
-  placeholder.remove();
+  placeholderCont.remove();
   factory.product();
   elemToAppend.append(factory.draw());
 }
@@ -36,7 +36,7 @@ export function addFactoriesFromStore(
     mediumFactory: MediumFactory;
     largeFactory: LargeFactory;
   },
-  placeholder: HTMLElement,
+  placeholderCont: HTMLElement,
 ): void {
   if (
     !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.s) &&
@@ -45,7 +45,7 @@ export function addFactoriesFromStore(
     factories.smallFactory.currentLevel = state.factories.factoryS.level;
     factories.smallFactory.cookieProduction =
       factories.smallFactory.initProduction;
-    appendFactory(factoryContainer, factories.smallFactory, placeholder);
+    appendFactory(factoryContainer, factories.smallFactory, placeholderCont);
   }
 
   if (
@@ -55,7 +55,7 @@ export function addFactoriesFromStore(
     factories.mediumFactory.currentLevel = state.factories.factoryM.level;
     factories.mediumFactory.cookieProduction =
       factories.mediumFactory.initProduction;
-    appendFactory(factoryContainer, factories.mediumFactory, placeholder);
+    appendFactory(factoryContainer, factories.mediumFactory, placeholderCont);
   }
 
   if (
@@ -65,11 +65,11 @@ export function addFactoriesFromStore(
     factories.largeFactory.currentLevel = state.factories.factoryL.level;
     factories.largeFactory.cookieProduction =
       factories.largeFactory.initProduction;
-    appendFactory(factoryContainer, factories.largeFactory, placeholder);
+    appendFactory(factoryContainer, factories.largeFactory, placeholderCont);
   }
 
   if (!factoryContainer.hasChildNodes()) {
-    factoryContainer.append(placeholder);
+    factoryContainer.append(placeholderCont);
   }
 }
 

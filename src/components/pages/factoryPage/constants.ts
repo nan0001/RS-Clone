@@ -25,9 +25,13 @@ export const CONSTANTS = {
     tag: TAGS.button,
     classList: ['button', 'button__catalogue'],
   },
+  placeholderCont: {
+    tag: TAGS.div,
+    classList: 'factory-pg__placeholder',
+  },
   placeholder: {
     tag: TAGS.p,
-    classList: 'factory-pg__placeholder',
+    classList: 'factory-pg__placeholder-text',
   },
   placeholderText: {
     ru: 'Перейдите в каталог, чтобы купить ваш первый завод',
