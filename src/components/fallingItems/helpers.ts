@@ -1,5 +1,6 @@
+import store from '../../common/components/store/store';
 import { randomNumber } from '../../common/helpers/generateRandomNumber';
-import { CONSTANTS } from './constants';
+import FallingItem from './FallingItems';
 
 export const getRandomItem = (
   items: { name: string; img: string; cost: number; dropChance: number }[],
@@ -74,15 +75,15 @@ export const addAnimation = (item: HTMLElement, start?: number) => {
       startTime = timestamp;
     }
 
-    CONSTANTS.progress = (timestamp - startTime) / CONSTANTS.speed;
+    const progress =
+      (timestamp - startTime) / store.getState().fallingItems.speed;
 
-    const translate =
-      CONSTANTS.progress * document.body.getBoundingClientRect().height;
+    const translate = progress * document.body.getBoundingClientRect().height;
 
     animateItem.style.top = start + 'px';
     animateItem.style.transform = `translateY(${translate}px)`;
 
-    if (CONSTANTS.progress < 1) {
+    if (progress < 1) {
       animateItem.dataset.anim = window.requestAnimationFrame(step).toString();
     } else {
       window.cancelAnimationFrame(Number(animateItem.dataset.anim));
@@ -90,8 +91,8 @@ export const addAnimation = (item: HTMLElement, start?: number) => {
     }
   }
 
-  CONSTANTS.idAnime = window.requestAnimationFrame(step);
-  return CONSTANTS.idAnime;
+  FallingItem.idAnime = window.requestAnimationFrame(step);
+  return FallingItem.idAnime;
 };
 
 export const playSound = (file: string) => {

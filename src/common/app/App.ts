@@ -43,6 +43,9 @@ class App {
           if (!page.classList.contains(CONSTANTS.pageSelectors.entrance)) {
             appRoot.removeChild(page);
             appRoot.append(Entrance.draw());
+
+            if (GameBoard.timerId) GameBoard.stopGame();
+            console.log(GameBoard.timerId);
           }
 
           break;

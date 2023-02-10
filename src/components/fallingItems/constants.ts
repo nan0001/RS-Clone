@@ -14,8 +14,4 @@ export const CONSTANTS = {
     tag: TAGS.img,
     classList: 'game-field__item-image',
   },
-  speed: 8000,
-  idAnime: 0,
-  progress: 0,
-  doubleCost: false,
 };

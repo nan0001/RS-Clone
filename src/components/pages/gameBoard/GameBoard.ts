@@ -14,9 +14,8 @@ class GameBoard {
     const gameField = createElement(CONSTANTS.gameField);
     const totalCost = createElement(CONSTANTS.totalCost);
     const boosters = createElement(CONSTANTS.boosters);
-    // удалить
+
     boosters.append(Booster.draw(2), Booster.draw(1), Booster.draw(3));
-    //
     totalCost.innerText = String(store.getState().cookies.count);
 
     store.subscribe(() => {

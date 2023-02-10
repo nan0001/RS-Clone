@@ -5,7 +5,6 @@ import createElement from '../../common/helpers/createElement';
 import { CONSTANTS } from './constants';
 import { appendViewBtns } from './helpers';
 import './view.scss';
-import GameBoard from '../pages/gameBoard/GameBoard';
 
 class View {
   static draw(): HTMLElement {
@@ -25,7 +24,6 @@ class View {
 
     homeViewBtn.addEventListener('click', () => {
       store.dispatch(changeView(VIEW.home));
-      GameBoard.stopGame();
     });
 
     appendViewBtns(state, { homeViewBtn, cookieViewBtn, factoryViewBtn }, view);

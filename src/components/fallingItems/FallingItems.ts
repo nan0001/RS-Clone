@@ -13,9 +13,14 @@ import store from '../../common/components/store/store';
 import { increaseCookiesCount } from '../../common/components/store/reducers/cookiesCount';
 import sound from '../../common/assets/sounds/blow.mp3';
 import click from '../../common/assets/sounds/click.mp3';
+import {
+  changeDoubleCost,
+  changeSpeed,
+} from '../../common/components/store/reducers/fallingItems';
 
 class FallingItem {
   static prevState: number | string;
+  static idAnime: number;
 
   static draw(board: HTMLElement) {
     const fallingItem = createElement(CONSTANTS.gameItem);
@@ -41,7 +46,7 @@ class FallingItem {
       if (item) {
         let currentCost = item.cost;
 
-        if (CONSTANTS.doubleCost) {
+        if (store.getState().fallingItems.doubleCost) {
           currentCost = item.cost * 2;
           cost.textContent = `+${item.cost}x2`;
         }
@@ -59,9 +64,9 @@ class FallingItem {
   }
 
   static changeSpeed = (newSpeed: number) => {
-    this.prevState = CONSTANTS.speed;
-    CONSTANTS.speed = newSpeed;
-
+    this.prevState = store.getState().fallingItems.speed;
+    // CONSTANTS.speed = newSpeed;
+    store.dispatch(changeSpeed(newSpeed));
     updateCurrentItems('game-field__item', (e) => {
       const start = e.getBoundingClientRect().top;
       addAnimation(e, start);
@@ -69,7 +74,7 @@ class FallingItem {
   };
 
   static stopAnimation() {
-    window.cancelAnimationFrame(Number(CONSTANTS.idAnime));
+    window.cancelAnimationFrame(FallingItem.idAnime);
   }
 
   static blow() {
@@ -86,7 +91,8 @@ class FallingItem {
   }
 
   static doubleCost() {
-    CONSTANTS.doubleCost = !CONSTANTS.doubleCost;
+    store.dispatch(changeDoubleCost());
+    // CONSTANTS.doubleCost = !CONSTANTS.doubleCost;
   }
 }
 
