@@ -1,4 +1,4 @@
-import { LANG } from '../../helpers/constants';
+import { FACTORY_TYPES, LANG } from '../../helpers/constants';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
 import { buyFactory } from '../store/reducers/factories';
 import store, { RootState } from '../store/store';
@@ -81,6 +81,26 @@ export function upgradeBtnHandler(
   }
 }
 
+export function disableBuyBtn(buyBtn: HTMLElement, classToAdd: string): void {
+  if (classToAdd === FACTORY_TYPES.s) {
+    if (store.getState().factories.factoryS.bought) {
+      buyBtn.setAttribute('disabled', '');
+    }
+  }
+
+  if (classToAdd === FACTORY_TYPES.m) {
+    if (store.getState().factories.factoryM.bought) {
+      buyBtn.setAttribute('disabled', '');
+    }
+  }
+
+  if (classToAdd === FACTORY_TYPES.l) {
+    if (store.getState().factories.factoryL.bought) {
+      buyBtn.setAttribute('disabled', '');
+    }
+  }
+}
+
 export function drawForCatalogue(
   factory: HTMLElement,
   factoryTitle: HTMLElement,
@@ -89,6 +109,8 @@ export function drawForCatalogue(
   buyBtn: HTMLElement,
   classToAdd: string,
 ): void {
+  disableBuyBtn(buyBtn, classToAdd);
+
   buyBtn.addEventListener('click', () => {
     store.dispatch(buyFactory(classToAdd));
   });

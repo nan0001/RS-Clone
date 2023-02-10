@@ -4,6 +4,7 @@ import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
 import './factory.scss';
 import {
+  disableBuyBtn,
   drawForCatalogue,
   insertElemsText,
   upgradeBtnHandler,
@@ -96,6 +97,8 @@ class Factory {
           ? undefined
           : Math.round(this.cookieProduction * this.upgradeMultiplier),
       );
+
+      disableBuyBtn(buyBtn, classToAdd);
     });
 
     upgradeBtn.addEventListener('click', () => {

@@ -111,5 +111,14 @@
     &:hover {
       transform: scale(1.05);
     }
+
+    &:disabled {
+      filter: grayscale(100%);
+      cursor: not-allowed;
+
+      &:hover {
+        transform: none;
+      }
+    }
   }
 }
