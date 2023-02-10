@@ -17,11 +17,15 @@ class CataloguePopup extends Popup {
     );
   }
 
-  draw(): HTMLElement[] {
+  drawCatalogue(factories: {
+    smallFactory: SmallFactory;
+    mediumFactory: MediumFactory;
+    largeFactory: LargeFactory;
+  }): HTMLElement[] {
     const [overlay, popup] = super.draw();
-    const smallFactory = new SmallFactory().drawForCatalogue();
-    const mediumFactory = new MediumFactory().drawForCatalogue();
-    const largeFactory = new LargeFactory().drawForCatalogue();
+    const smallFactory = factories.smallFactory.drawForCatalogue();
+    const mediumFactory = factories.mediumFactory.drawForCatalogue();
+    const largeFactory = factories.largeFactory.drawForCatalogue();
     const popupBody = createElement(CONSTANTS.popupBody);
 
     popupBody.append(smallFactory, mediumFactory, largeFactory);

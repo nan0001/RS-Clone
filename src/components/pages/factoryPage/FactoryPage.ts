@@ -48,7 +48,7 @@ class FactoryPage {
 
     [catalogueBtn, catalogueBtnClone].forEach((el) => {
       el.addEventListener('click', () => {
-        factoryPg.append(...new CataloguePopup().draw());
+        factoryPg.append(...new CataloguePopup().drawCatalogue(factories));
       });
     });
 
