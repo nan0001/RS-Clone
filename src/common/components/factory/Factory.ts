@@ -117,9 +117,9 @@ class Factory {
     });
 
     removebtn.addEventListener('click', () => {
-      store.dispatch(removeFactory(classToAdd));
       this.stopProduction();
       factory.remove();
+      store.dispatch(removeFactory(classToAdd));
     });
 
     if (isForCatalogue) {
