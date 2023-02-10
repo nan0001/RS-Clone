@@ -27,6 +27,54 @@ function isFactoryAmongChildren(
   return index === -1 ? false : true;
 }
 
+function multiplyProductionByLevel(
+  factory: SmallFactory | MediumFactory | LargeFactory,
+  level: number,
+): number {
+  let production = factory.initProduction;
+
+  for (let i = 1; i < level; i++) {
+    production = Math.round(production * factory.upgradeMultiplier);
+  }
+
+  return production;
+}
+
+function multiplyUpgradeCostByLevel(
+  factory: SmallFactory | MediumFactory | LargeFactory,
+  level: number,
+): number {
+  let cost = factory.initUpgradePrice;
+
+  for (let i = 1; i < level; i++) {
+    cost = Math.round(cost * factory.upgradeMultiplier);
+  }
+
+  return cost;
+}
+
+function resetFactory(
+  factory: SmallFactory | MediumFactory | LargeFactory,
+  state: RootState,
+): void {
+  const factoryState =
+    factory instanceof SmallFactory
+      ? state.factories.factoryS
+      : factory instanceof MediumFactory
+      ? state.factories.factoryM
+      : state.factories.factoryL;
+
+  factory.currentLevel = factoryState.level;
+  factory.cookieProduction = multiplyProductionByLevel(
+    factory,
+    factoryState.level,
+  );
+  factory.upgradePrice = multiplyUpgradeCostByLevel(
+    factory,
+    factoryState.level,
+  );
+}
+
 export function addFactoriesFromStore(
   state: RootState,
   factoryContainer: HTMLElement,
@@ -41,9 +89,7 @@ export function addFactoriesFromStore(
     !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.s) &&
     state.factories.factoryS.bought
   ) {
-    factories.smallFactory.currentLevel = state.factories.factoryS.level;
-    factories.smallFactory.cookieProduction =
-      factories.smallFactory.initProduction;
+    resetFactory(factories.smallFactory, state);
     appendFactory(factoryContainer, factories.smallFactory, placeholderCont);
   }
 
@@ -51,9 +97,7 @@ export function addFactoriesFromStore(
     !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.m) &&
     state.factories.factoryM.bought
   ) {
-    factories.mediumFactory.currentLevel = state.factories.factoryM.level;
-    factories.mediumFactory.cookieProduction =
-      factories.mediumFactory.initProduction;
+    resetFactory(factories.mediumFactory, state);
     appendFactory(factoryContainer, factories.mediumFactory, placeholderCont);
   }
 
@@ -61,9 +105,7 @@ export function addFactoriesFromStore(
     !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.l) &&
     state.factories.factoryL.bought
   ) {
-    factories.largeFactory.currentLevel = state.factories.factoryL.level;
-    factories.largeFactory.cookieProduction =
-      factories.largeFactory.initProduction;
+    resetFactory(factories.largeFactory, state);
     appendFactory(factoryContainer, factories.largeFactory, placeholderCont);
   }
 

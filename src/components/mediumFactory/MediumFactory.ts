@@ -7,6 +7,7 @@ import './mediumFactory.scss';
 
 class MediumFactory extends Factory {
   public initProduction: number;
+  public initUpgradePrice: number;
   protected title: FactoryTitle;
   protected description: FactoryDesc;
 
@@ -19,6 +20,7 @@ class MediumFactory extends Factory {
       FACTORIES.medium.upgradePrice,
     );
     this.initProduction = FACTORIES.medium.production;
+    this.initUpgradePrice = FACTORIES.medium.upgradePrice;
     this.title = FACTORIES.medium.title;
     this.description = FACTORIES.medium.description;
   }

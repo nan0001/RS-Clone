@@ -7,6 +7,7 @@ import './smallFactory.scss';
 
 class SmallFactory extends Factory {
   public initProduction: number;
+  public initUpgradePrice: number;
   protected title: FactoryTitle;
   protected description: FactoryDesc;
 
@@ -19,6 +20,7 @@ class SmallFactory extends Factory {
       FACTORIES.small.upgradePrice,
     );
     this.initProduction = FACTORIES.small.production;
+    this.initUpgradePrice = FACTORIES.small.upgradePrice;
     this.title = FACTORIES.small.title;
     this.description = FACTORIES.small.description;
   }
