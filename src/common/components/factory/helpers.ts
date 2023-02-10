@@ -15,6 +15,7 @@ export function insertElemsText(
   title?: FactoryTitle,
   desc?: FactoryDesc,
   amountAfterUpgrade?: number,
+  upgradeCost?: number,
 ): void {
   if (state.lang.lang === LANG.en) {
     if (elems.factoryTitle && title) {
@@ -25,9 +26,11 @@ export function insertElemsText(
       elems.description.innerText = desc.descriptionEN;
     }
 
-    if (elems.upgradeText && amountAfterUpgrade) {
-      elems.upgradeText.innerText =
-        CONSTANTS.upgradeTextENHandler(amountAfterUpgrade);
+    if (elems.upgradeText && amountAfterUpgrade && upgradeCost) {
+      elems.upgradeText.innerText = CONSTANTS.upgradeTextENHandler(
+        amountAfterUpgrade,
+        upgradeCost,
+      );
     } else if (elems.upgradeText && !amountAfterUpgrade) {
       elems.upgradeText.innerText = CONSTANTS.maxUpgrade.en;
     }
@@ -44,9 +47,11 @@ export function insertElemsText(
       elems.description.innerText = desc.descriptionRU;
     }
 
-    if (elems.upgradeText && amountAfterUpgrade) {
-      elems.upgradeText.innerText =
-        CONSTANTS.upgradeTextRUHandler(amountAfterUpgrade);
+    if (elems.upgradeText && amountAfterUpgrade && upgradeCost) {
+      elems.upgradeText.innerText = CONSTANTS.upgradeTextRUHandler(
+        amountAfterUpgrade,
+        upgradeCost,
+      );
     } else if (elems.upgradeText && !amountAfterUpgrade) {
       elems.upgradeText.innerText = CONSTANTS.maxUpgrade.ru;
     }
@@ -61,6 +66,7 @@ export function upgradeBtnHandler(
   factory: Factory,
   upgradeBtn: HTMLElement,
   upgradeText: HTMLElement,
+  upgradeCost: number,
 ): void {
   const state = store.getState();
 
@@ -76,6 +82,7 @@ export function upgradeBtnHandler(
       undefined,
       undefined,
       Math.round(factory.cookieProduction * factory.upgradeMultiplier),
+      upgradeCost,
     );
   }
 }

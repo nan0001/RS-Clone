@@ -47,6 +47,9 @@ class Factory {
       this.cookieProduction = Math.round(
         this.cookieProduction * this.upgradeMultiplier,
       );
+      this.upgradePrice = Math.round(
+        this.upgradePrice * this.upgradeMultiplier,
+      );
     }
   }
 
@@ -67,6 +70,9 @@ class Factory {
     const upgradeBtn = createElement(CONSTANTS.factoryUpgradeBtn);
     const removebtn = createElement(CONSTANTS.factoryRemoveBtn);
     const buyBtn = createElement(CONSTANTS.buyBtn);
+    const factoryPriceCont = createElement(CONSTANTS.factoryPriceCont);
+    const factoryCurrency = createElement(CONSTANTS.factoryCurrency);
+    const factoryPrice = createElement(CONSTANTS.factoryPrice);
     const elemsChangingLang = {
       factoryTitle,
       description,
@@ -76,9 +82,16 @@ class Factory {
 
     factory.classList.add(CONSTANTS.additionalFactoryClass(classToAdd));
     factoryProduction.innerText = `${this.cookieProduction}`;
+    factoryPrice.innerText = `${this.price}`;
 
     if (this.currentLevel === this.maxLevel) {
       upgradeBtn.setAttribute('disabled', '');
+    }
+
+    if (store.getState().cookies.count < this.upgradePrice) {
+      upgradeBtn.setAttribute('disabled', '');
+    } else if (this.currentLevel !== this.maxLevel) {
+      upgradeBtn.removeAttribute('disabled');
     }
 
     insertElemsText(
@@ -89,6 +102,7 @@ class Factory {
       this.currentLevel === this.maxLevel
         ? undefined
         : Math.round(this.cookieProduction * this.upgradeMultiplier),
+      this.upgradePrice,
     );
 
     store.subscribe(() => {
@@ -100,13 +114,20 @@ class Factory {
         this.currentLevel === this.maxLevel
           ? undefined
           : Math.round(this.cookieProduction * this.upgradeMultiplier),
+        this.upgradePrice,
       );
+
+      if (store.getState().cookies.count < this.upgradePrice) {
+        upgradeBtn.setAttribute('disabled', '');
+      } else if (this.currentLevel !== this.maxLevel) {
+        upgradeBtn.removeAttribute('disabled');
+      }
 
       disableBuyBtn(buyBtn, classToAdd, this.price);
     });
 
     upgradeBtn.addEventListener('click', () => {
-      upgradeBtnHandler(this, upgradeBtn, upgradeText);
+      upgradeBtnHandler(this, upgradeBtn, upgradeText, this.upgradePrice);
       factoryProduction.innerText = `${this.cookieProduction}`;
       store.dispatch(upgradeFactory(classToAdd));
     });
@@ -125,7 +146,9 @@ class Factory {
     if (isForCatalogue) {
       disableBuyBtn(buyBtn, classToAdd, this.price);
       factory.classList.add(CONSTANTS.classForCatalogue);
-      factory.append(factoryTitle, img, description, buyBtn);
+
+      factoryPriceCont.append(factoryCurrency, factoryPrice);
+      factory.append(factoryTitle, img, description, factoryPriceCont, buyBtn);
     } else {
       textContainer.append(factoryTitle, description, upgradeText);
       btnsContainer.append(factoryProduction, removebtn, upgradeBtn);

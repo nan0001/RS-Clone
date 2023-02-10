@@ -28,11 +28,11 @@ export const CONSTANTS = {
     tag: TAGS.p,
     classList: 'factory__upgrade',
   },
-  upgradeTextENHandler(amount: number): string {
-    return `Next upgrade will increase production to ${amount} cookies`;
+  upgradeTextENHandler(amount: number, upgradeCost: number): string {
+    return `Next upgrade will increase production to ${amount} cookies.\nUpgrade cost ${upgradeCost} cookies`;
   },
-  upgradeTextRUHandler(amount: number): string {
-    return `Следующее повышение уровня увеличит производство до ${amount} печенек`;
+  upgradeTextRUHandler(amount: number, upgradeCost: number): string {
+    return `Следующее повышение уровня увеличит производство до ${amount} печенек. \nСтоимость улучшения ${upgradeCost} печенек`;
   },
   maxUpgrade: {
     en: 'Max upgrade level reached',
@@ -64,4 +64,16 @@ export const CONSTANTS = {
   },
   buyBtnBoughtClass: 'bought',
   classForCatalogue: 'catalogue__factory',
+  factoryPriceCont: {
+    tag: TAGS.div,
+    classList: 'factory__price-cont',
+  },
+  factoryCurrency: {
+    tag: TAGS.div,
+    classList: 'factory__currency',
+  },
+  factoryPrice: {
+    tag: TAGS.p,
+    classList: 'factory__price',
+  },
 };
