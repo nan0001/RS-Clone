@@ -1,4 +1,7 @@
-import { increaseCookiesCount } from '../store/reducers/cookiesCount';
+import {
+  increaseCookiesCount,
+  decreaseCookiesCount,
+} from '../store/reducers/cookiesCount';
 import store from '../store/store';
 import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
@@ -7,7 +10,7 @@ import { checkBuyBtn, insertElemsText, upgradeBtnHandler } from './helpers';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
 import {
   buyFactory,
-  // removeFactory,
+  saveFactory,
   upgradeFactory,
 } from '../store/reducers/factories';
 import RemoveConfirmationPopup from '../../../components/removeConfirmationPopup/RemoveConfirmationPopup';
@@ -19,7 +22,6 @@ class Factory {
   public upgradeMultiplier: number;
   public price: number;
   public upgradePrice: number;
-  // protected timer: ReturnType<typeof setInterval> | undefined;
   static timer: ReturnType<typeof setInterval> | undefined = undefined;
 
   constructor(cookieProduction: number, price: number, upgradePrice: number) {
@@ -29,7 +31,6 @@ class Factory {
     this.upgradeMultiplier = 1.2;
     this.price = price;
     this.upgradePrice = upgradePrice;
-    // this.timer = undefined;
   }
 
   product(): void {
@@ -131,10 +132,13 @@ class Factory {
       upgradeBtnHandler(this, upgradeBtn, upgradeText, this.upgradePrice);
       factoryProduction.innerText = `${this.cookieProduction}`;
       store.dispatch(upgradeFactory(classToAdd));
+      store.dispatch(decreaseCookiesCount(this.upgradePrice));
     });
 
     buyBtn.addEventListener('click', () => {
       store.dispatch(buyFactory(classToAdd));
+      store.dispatch(saveFactory(this));
+      store.dispatch(decreaseCookiesCount(this.price));
       this.product();
     });
 
@@ -142,8 +146,6 @@ class Factory {
       document.body.append(
         ...new RemoveConfirmationPopup(factory, this, classToAdd).draw(),
       );
-      // this.stopProduction();
-      // store.dispatch(removeFactory(classToAdd));
     });
 
     if (isForCatalogue) {

@@ -13,6 +13,10 @@ const store = configureStore({
     fallingItems: fallingItems,
     factories: factories,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;

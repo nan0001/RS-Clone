@@ -18,9 +18,15 @@ class FactoryPage {
     const catalogueBtnClone = catalogueBtn.cloneNode(true);
     const placeholderCont = createElement(CONSTANTS.placeholderCont);
     const placeholder = createElement(CONSTANTS.placeholder);
-    const smallFactory = new SmallFactory();
-    const mediumFactory = new MediumFactory();
-    const largeFactory = new LargeFactory();
+    const smallFactory = store.getState().factories.factoryS.factory
+      ? (store.getState().factories.factoryS.factory as SmallFactory)
+      : new SmallFactory();
+    const mediumFactory = store.getState().factories.factoryM.factory
+      ? (store.getState().factories.factoryM.factory as MediumFactory)
+      : new MediumFactory();
+    const largeFactory = store.getState().factories.factoryL.factory
+      ? (store.getState().factories.factoryL.factory as LargeFactory)
+      : new LargeFactory();
     const factories = { smallFactory, mediumFactory, largeFactory };
 
     cookieCount.innerText = `${store.getState().cookies.count}`;
