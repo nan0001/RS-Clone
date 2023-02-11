@@ -17,6 +17,8 @@ class Entrance {
     const guestBtn = createElement(CONSTANTS.guestBtn);
     const aboutBtn = createElement(CONSTANTS.aboutBtn);
 
+    changeLanguage(store.getState(), { registerBtn, guestBtn, aboutBtn });
+
     btnContainer.append(registerBtn, guestBtn, aboutBtn);
     menu.append(title, btnContainer);
     entrance.append(bgImg, menu);
