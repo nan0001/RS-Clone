@@ -5,7 +5,7 @@
   height: 100px;
   border-radius: 50%;
   position: absolute;
-  animation: dropDown 8s linear;
+  top: -100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,20 @@
 
   &-image {
     width: 100%;
+  }
+  &_blow {
+    &:before {
+      content: '';
+      width: 100px;
+      height: 100px;
+      background: url('../../common/assets/cookies/explosion.png');
+      position: absolute;
+      display: inline-block;
+      background-size: cover;
+      z-index: 1;
+      transition: 0.4s;
+      transform: scale(200%);
+    }
   }
   &-cost {
     position: absolute;

@@ -1,11 +1,9 @@
 import card_1 from '../assets/cookies/cake(1-1).png';
-// import card_2 from "../assets/cookies/cake(1-2).png";
-// import card_3 from "../assets/cookies/cake(1-3).png";
-// import card_4 from "../assets/cookies/cake(1-4).png";
-// import card_5 from "../assets/cookies/cake(1-5).png";
-import card_6 from '../assets/cookies/cake(1-6).png';
-import card_7 from '../assets/cookies/cake(1-7).png';
-// import card_8 from "../assets/cookies/cake(1-8).png";
+import card_2 from '../assets/cookies/cake(1-6).png';
+import card_3 from '../assets/cookies/cake(1-7).png';
+import booster_1 from '../assets/boosters/coinX2.png';
+import booster_2 from '../assets/boosters/hourglass.png';
+import booster_3 from '../assets/boosters/bomb.png';
 
 export const TAGS = {
   div: 'div',
@@ -30,49 +28,20 @@ export const PRODUCTS = [
     cost: 50,
     dropChance: 0.1,
   },
-  // {
-  //   name: 'piece of cake',
-  //   img: card_2,
-  //   cost: 60,
-  //   dropChance: 0.7,
-  // },
-  // {
-  //   name: 'cake',
-  //   img: card_3,
-  //   cost: 100,
-  //   dropChance: 0.1,
-  // },
-  // {
-  //   name: 'cake',
-  //   img: card_4,
-  //   cost: 100,
-  //   dropChance: 0.1,
-  // },
-  // {
-  //   name: 'small cake',
-  //   img: card_5,
-  //   cost: 50,
-  //   dropChance: 1.5,
-  // },
   {
     name: 'donut',
-    img: card_6,
+    img: card_2,
     cost: 30,
     dropChance: 1,
   },
   {
     name: 'cookies',
-    img: card_7,
+    img: card_3,
     cost: 10,
     dropChance: 1.6,
   },
-  // {
-  //   name: 'gingerbread',
-  //   img: card_8,
-  //   cost: 20,
-  //   dropChance: 1.8,
-  // },
 ];
+
 export const LANG = {
   ru: 'ru',
   en: 'en',
@@ -83,3 +52,24 @@ export const VIEW = {
   factory: 'factory',
   home: 'home',
 };
+
+export const BOOSTERS = [
+  {
+    id: 1,
+    name: 'doubleCost',
+    img: booster_1,
+    timer: true,
+  },
+  {
+    id: 2,
+    name: 'changeSpeed',
+    img: booster_2,
+    property: 16000,
+    timer: true,
+  },
+  {
+    id: 3,
+    name: 'blow',
+    img: booster_3,
+  },
+];

@@ -1,4 +1,6 @@
+import store from '../../common/components/store/store';
 import { randomNumber } from '../../common/helpers/generateRandomNumber';
+import FallingItem from './FallingItems';
 
 export const getRandomItem = (
   items: { name: string; img: string; cost: number; dropChance: number }[],
@@ -51,4 +53,55 @@ export const generatePosition = (board: HTMLElement) => {
   }
 
   return x;
+};
+
+export const updateCurrentItems = (
+  selector: string,
+  callback: (e: HTMLElement) => void,
+) => {
+  Array.from(document.querySelectorAll(`.${selector}`)).forEach((e) => {
+    if (e instanceof HTMLElement) {
+      window.cancelAnimationFrame(Number(e.dataset.anim));
+      callback(e);
+    }
+  });
+};
+export const addAnimation = (item: HTMLElement, start?: number) => {
+  let startTime = 0;
+  const animateItem = item;
+
+  function step(timestamp: number) {
+    if (!startTime) {
+      startTime = timestamp;
+    }
+
+    const progress =
+      (timestamp - startTime) / store.getState().fallingItems.speed;
+
+    const translate = progress * document.body.getBoundingClientRect().height;
+
+    animateItem.style.top = start + 'px';
+    animateItem.style.transform = `translateY(${translate}px)`;
+
+    if (progress < 1) {
+      animateItem.dataset.anim = window.requestAnimationFrame(step).toString();
+    } else {
+      window.cancelAnimationFrame(Number(animateItem.dataset.anim));
+      animateItem.remove();
+    }
+  }
+
+  FallingItem.idAnime = window.requestAnimationFrame(step);
+  return FallingItem.idAnime;
+};
+
+export const playSound = (file: string) => {
+  const audio = new Audio(file);
+  const soundBtn = document.querySelector('.button__sound');
+
+  if (soundBtn) {
+    if (soundBtn.classList.contains('sound-on')) {
+      audio.play();
+    }
+  }
 };

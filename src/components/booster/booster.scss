@@ -1,0 +1,44 @@
+@import '../../common/styles/main';
+.game-boosters {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+  &__item {
+    width: 100px;
+    height: 100px;
+    //background-color: $light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+
+    &-image {
+      width: 70px;
+      height: 70px;
+      z-index: 2;
+    }
+    &-timer {
+      position: absolute;
+      padding: 0.2% 3%;
+      right: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      background-color: $light;
+      border-radius: 15px;
+      border: 2px solid $dark-red;
+      color: $dark-red;
+      z-index: 1;
+      min-width: 3rem;
+      transition: 1s;
+      opacity: 0;
+
+      &_active {
+        opacity: 1;
+        transform: translateX(70%);
+      }
+    }
+  }
+}
