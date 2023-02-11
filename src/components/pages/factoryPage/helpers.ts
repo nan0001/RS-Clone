@@ -71,17 +71,7 @@ function checkFactory(
   placeholderCont: HTMLElement,
 ): void {
   const factoryType = defineFactoryType(factory);
-  // factory instanceof SmallFactory
-  //   ? FACTORY_TYPES.s
-  //   : factory instanceof MediumFactory
-  //   ? FACTORY_TYPES.m
-  //   : FACTORY_TYPES.l;
   const factoryState = defineFactoryState(factory, state);
-  // factory instanceof SmallFactory
-  //   ? state.factories.factoryS
-  //   : factory instanceof MediumFactory
-  //   ? state.factories.factoryM
-  //   : state.factories.factoryL;
 
   if (
     !isFactoryAmongChildren(factoryContainer, factoryType) &&

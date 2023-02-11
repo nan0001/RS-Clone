@@ -7,9 +7,10 @@ import { checkBuyBtn, insertElemsText, upgradeBtnHandler } from './helpers';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
 import {
   buyFactory,
-  removeFactory,
+  // removeFactory,
   upgradeFactory,
 } from '../store/reducers/factories';
+import RemoveConfirmationPopup from '../../../components/removeConfirmationPopup/RemoveConfirmationPopup';
 
 class Factory {
   public cookieProduction: number;
@@ -138,9 +139,11 @@ class Factory {
     });
 
     removebtn.addEventListener('click', () => {
-      this.stopProduction();
-      factory.remove();
-      store.dispatch(removeFactory(classToAdd));
+      document.body.append(
+        ...new RemoveConfirmationPopup(factory, this, classToAdd).draw(),
+      );
+      // this.stopProduction();
+      // store.dispatch(removeFactory(classToAdd));
     });
 
     if (isForCatalogue) {
