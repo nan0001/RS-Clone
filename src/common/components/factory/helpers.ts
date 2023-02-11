@@ -87,44 +87,30 @@ export function upgradeBtnHandler(
   }
 }
 
-export function disableBuyBtn(
+export function checkBuyBtn(
   buyBtn: HTMLElement,
   classToAdd: string,
   price: number,
 ): void {
-  if (classToAdd === FACTORY_TYPES.s) {
-    if (store.getState().factories.factoryS.bought) {
-      buyBtn.classList.add(CONSTANTS.buyBtnBoughtClass);
-      buyBtn.innerText = '';
-      buyBtn.setAttribute('disabled', '');
-    }
+  const state = store.getState();
+  const factoryState =
+    classToAdd === FACTORY_TYPES.s
+      ? state.factories.factoryS
+      : classToAdd === FACTORY_TYPES.m
+      ? state.factories.factoryM
+      : state.factories.factoryL;
 
-    if (store.getState().cookies.count < price) {
-      buyBtn.setAttribute('disabled', '');
-    }
+  if (factoryState.bought) {
+    buyBtn.classList.add(CONSTANTS.buyBtnBoughtClass);
+    buyBtn.innerText = '';
+    buyBtn.setAttribute('disabled', '');
   }
 
-  if (classToAdd === FACTORY_TYPES.m) {
-    if (store.getState().factories.factoryM.bought) {
-      buyBtn.classList.add(CONSTANTS.buyBtnBoughtClass);
-      buyBtn.innerText = '';
-      buyBtn.setAttribute('disabled', '');
-    }
-
-    if (store.getState().cookies.count < price) {
-      buyBtn.setAttribute('disabled', '');
-    }
+  if (state.cookies.count < price) {
+    buyBtn.setAttribute('disabled', '');
   }
 
-  if (classToAdd === FACTORY_TYPES.l) {
-    if (store.getState().factories.factoryL.bought) {
-      buyBtn.classList.add(CONSTANTS.buyBtnBoughtClass);
-      buyBtn.innerText = '';
-      buyBtn.setAttribute('disabled', '');
-    }
-
-    if (store.getState().cookies.count < price) {
-      buyBtn.setAttribute('disabled', '');
-    }
+  if (!factoryState.bought && state.cookies.count > price) {
+    buyBtn.removeAttribute('disabled');
   }
 }

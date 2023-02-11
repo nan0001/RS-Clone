@@ -1,5 +1,7 @@
 import { RootState } from '../../../common/components/store/store';
-import { FACTORY_TYPES, LANG } from '../../../common/helpers/constants';
+import { LANG } from '../../../common/helpers/constants';
+import { defineFactoryState } from '../../../common/helpers/defineFactoryState';
+import { defineFactoryType } from '../../../common/helpers/defineFactoryType';
 import LargeFactory from '../../largeFactory/LargeFactory';
 import MediumFactory from '../../mediumFactory/MediumFactory';
 import SmallFactory from '../../smallFactory/SmallFactory';
@@ -68,18 +70,18 @@ function checkFactory(
   factoryContainer: HTMLElement,
   placeholderCont: HTMLElement,
 ): void {
-  const factoryType =
-    factory instanceof SmallFactory
-      ? FACTORY_TYPES.s
-      : factory instanceof MediumFactory
-      ? FACTORY_TYPES.m
-      : FACTORY_TYPES.l;
-  const factoryState =
-    factory instanceof SmallFactory
-      ? state.factories.factoryS
-      : factory instanceof MediumFactory
-      ? state.factories.factoryM
-      : state.factories.factoryL;
+  const factoryType = defineFactoryType(factory);
+  // factory instanceof SmallFactory
+  //   ? FACTORY_TYPES.s
+  //   : factory instanceof MediumFactory
+  //   ? FACTORY_TYPES.m
+  //   : FACTORY_TYPES.l;
+  const factoryState = defineFactoryState(factory, state);
+  // factory instanceof SmallFactory
+  //   ? state.factories.factoryS
+  //   : factory instanceof MediumFactory
+  //   ? state.factories.factoryM
+  //   : state.factories.factoryL;
 
   if (
     !isFactoryAmongChildren(factoryContainer, factoryType) &&

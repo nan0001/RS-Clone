@@ -3,7 +3,7 @@ import store from '../store/store';
 import createElement from '../../helpers/createElement';
 import { CONSTANTS } from './constants';
 import './factory.scss';
-import { disableBuyBtn, insertElemsText, upgradeBtnHandler } from './helpers';
+import { checkBuyBtn, insertElemsText, upgradeBtnHandler } from './helpers';
 import { FactoryDesc, FactoryTitle } from '../../helpers/types';
 import {
   buyFactory,
@@ -123,7 +123,7 @@ class Factory {
         upgradeBtn.removeAttribute('disabled');
       }
 
-      disableBuyBtn(buyBtn, classToAdd, this.price);
+      checkBuyBtn(buyBtn, classToAdd, this.price);
     });
 
     upgradeBtn.addEventListener('click', () => {
@@ -144,7 +144,7 @@ class Factory {
     });
 
     if (isForCatalogue) {
-      disableBuyBtn(buyBtn, classToAdd, this.price);
+      checkBuyBtn(buyBtn, classToAdd, this.price);
       factory.classList.add(CONSTANTS.classForCatalogue);
 
       factoryPriceCont.append(factoryCurrency, factoryPrice);
