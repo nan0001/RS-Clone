@@ -32,7 +32,7 @@ export const CONSTANTS = {
     return `Next upgrade will increase production to ${amount} cookies.\nUpgrade cost ${upgradeCost} cookies`;
   },
   upgradeTextRUHandler(amount: number, upgradeCost: number): string {
-    return `Следующее повышение уровня увеличит производство до ${amount} печенек. \nСтоимость улучшения ${upgradeCost} печенек`;
+    return `Повышение уровня увеличит производство до ${amount} печенек. \nСтоимость улучшения ${upgradeCost} печенек`;
   },
   maxUpgrade: {
     en: 'Max upgrade level reached',
