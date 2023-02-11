@@ -55,8 +55,25 @@ function multiplyUpgradeCostByLevel(
 
 function resetFactory(
   factory: SmallFactory | MediumFactory | LargeFactory,
-  state: RootState,
+  level: number,
 ): void {
+  factory.currentLevel = level;
+  factory.cookieProduction = multiplyProductionByLevel(factory, level);
+  factory.upgradePrice = multiplyUpgradeCostByLevel(factory, level);
+}
+
+function checkFactory(
+  state: RootState,
+  factory: SmallFactory | MediumFactory | LargeFactory,
+  factoryContainer: HTMLElement,
+  placeholderCont: HTMLElement,
+): void {
+  const factoryType =
+    factory instanceof SmallFactory
+      ? FACTORY_TYPES.s
+      : factory instanceof MediumFactory
+      ? FACTORY_TYPES.m
+      : FACTORY_TYPES.l;
   const factoryState =
     factory instanceof SmallFactory
       ? state.factories.factoryS
@@ -64,15 +81,13 @@ function resetFactory(
       ? state.factories.factoryM
       : state.factories.factoryL;
 
-  factory.currentLevel = factoryState.level;
-  factory.cookieProduction = multiplyProductionByLevel(
-    factory,
-    factoryState.level,
-  );
-  factory.upgradePrice = multiplyUpgradeCostByLevel(
-    factory,
-    factoryState.level,
-  );
+  if (
+    !isFactoryAmongChildren(factoryContainer, factoryType) &&
+    factoryState.bought
+  ) {
+    resetFactory(factory, factoryState.level);
+    appendFactory(factoryContainer, factory, placeholderCont);
+  }
 }
 
 export function addFactoriesFromStore(
@@ -85,29 +100,24 @@ export function addFactoriesFromStore(
   },
   placeholderCont: HTMLElement,
 ): void {
-  if (
-    !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.s) &&
-    state.factories.factoryS.bought
-  ) {
-    resetFactory(factories.smallFactory, state);
-    appendFactory(factoryContainer, factories.smallFactory, placeholderCont);
-  }
-
-  if (
-    !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.m) &&
-    state.factories.factoryM.bought
-  ) {
-    resetFactory(factories.mediumFactory, state);
-    appendFactory(factoryContainer, factories.mediumFactory, placeholderCont);
-  }
-
-  if (
-    !isFactoryAmongChildren(factoryContainer, FACTORY_TYPES.l) &&
-    state.factories.factoryL.bought
-  ) {
-    resetFactory(factories.largeFactory, state);
-    appendFactory(factoryContainer, factories.largeFactory, placeholderCont);
-  }
+  checkFactory(
+    state,
+    factories.smallFactory,
+    factoryContainer,
+    placeholderCont,
+  );
+  checkFactory(
+    state,
+    factories.mediumFactory,
+    factoryContainer,
+    placeholderCont,
+  );
+  checkFactory(
+    state,
+    factories.largeFactory,
+    factoryContainer,
+    placeholderCont,
+  );
 
   if (!factoryContainer.hasChildNodes()) {
     factoryContainer.append(placeholderCont);
