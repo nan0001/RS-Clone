@@ -83,8 +83,8 @@ export const FACTORY_TYPES = {
 export const FACTORIES = {
   small: {
     production: 10,
-    price: 10,
-    upgradePrice: 30,
+    price: 500,
+    upgradePrice: 300,
     title: {
       titleEN: 'Small Factory',
       titleRU: 'Маленький завод',
@@ -98,8 +98,8 @@ export const FACTORIES = {
   },
   medium: {
     production: 20,
-    price: 20,
-    upgradePrice: 80,
+    price: 2000,
+    upgradePrice: 800,
     title: {
       titleEN: 'Medium Factory',
       titleRU: 'Завод побольше',
@@ -113,8 +113,8 @@ export const FACTORIES = {
   },
   large: {
     production: 50,
-    price: 70,
-    upgradePrice: 20,
+    price: 7000,
+    upgradePrice: 2000,
     title: {
       titleEN: 'Large Factory',
       titleRU: 'Очень большой завод',
