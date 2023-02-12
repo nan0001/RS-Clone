@@ -13,5 +13,6 @@ export const CONSTANTS = {
   pageSelectors: {
     entrance: 'entrance',
     cookie: 'wrapper-game',
+    factory: 'factory-pg',
   },
 };

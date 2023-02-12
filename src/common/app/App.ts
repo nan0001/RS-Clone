@@ -8,6 +8,7 @@ import Controls from '../../components/controls/Controls';
 import store from '../components/store/store';
 import { VIEW } from '../helpers/constants';
 import GameBoard from '../../components/pages/gameBoard/GameBoard';
+import FactoryPage from '../../components/pages/factoryPage/FactoryPage';
 
 class App {
   static init(): void {
@@ -36,9 +37,12 @@ class App {
 
           break;
         case VIEW.factory:
-          //тут подключить страницу заводов
-          break;
+          if (!page.classList.contains(CONSTANTS.pageSelectors.factory)) {
+            appRoot.removeChild(page);
+            appRoot.append(FactoryPage.draw());
+          }
 
+          break;
         default:
           if (!page.classList.contains(CONSTANTS.pageSelectors.entrance)) {
             appRoot.removeChild(page);

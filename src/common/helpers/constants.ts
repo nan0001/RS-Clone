@@ -73,3 +73,60 @@ export const BOOSTERS = [
     img: booster_3,
   },
 ];
+
+export const FACTORY_TYPES = {
+  s: 's',
+  m: 'm',
+  l: 'l',
+};
+
+export const FACTORIES = {
+  initLevel: 1,
+  maxLevel: 10,
+  upgradeMultiplier: 1.2,
+  small: {
+    production: 10,
+    price: 500,
+    upgradePrice: 300,
+    title: {
+      titleEN: 'Small Factory',
+      titleRU: 'Маленький завод',
+    },
+    description: {
+      descriptionEN:
+        'Small Factory provides 10 cookies per second without upgrades. On the max level it can provide 50 cookies per second.',
+      descriptionRU:
+        'Маленький завод производит 10 печенек в секунду. На максимальном уровне производство вырастет до 50 печенек',
+    },
+  },
+  medium: {
+    production: 20,
+    price: 2000,
+    upgradePrice: 800,
+    title: {
+      titleEN: 'Medium Factory',
+      titleRU: 'Завод побольше',
+    },
+    description: {
+      descriptionEN:
+        'Medium Factory provides 20 cookies per second without upgrades. On the max level it can provide 103 cookies per second.',
+      descriptionRU:
+        'Средний завод производит 20 печенек в секунду. На максимальном уровне производство вырастет до 103 печенек',
+    },
+  },
+  large: {
+    production: 50,
+    price: 7000,
+    upgradePrice: 2000,
+    title: {
+      titleEN: 'Large Factory',
+      titleRU: 'Очень большой завод',
+    },
+    description: {
+      descriptionEN:
+        'Large Factory provides 50 cookies per second without upgrades. On the max level it can provide 258 cookies per second.',
+      descriptionRU:
+        'Большой завод производит 50 печенек в секунду. На максимальном уровне производство вырастет до 258 печенек',
+    },
+  },
+};
