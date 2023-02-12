@@ -81,6 +81,9 @@ export const FACTORY_TYPES = {
 };
 
 export const FACTORIES = {
+  initLevel: 1,
+  maxLevel: 10,
+  upgradeMultiplier: 1.2,
   small: {
     production: 10,
     price: 500,

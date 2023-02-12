@@ -14,6 +14,7 @@ import {
   upgradeFactory,
 } from '../store/reducers/factories';
 import RemoveConfirmationPopup from '../../../components/removeConfirmationPopup/RemoveConfirmationPopup';
+import { FACTORIES } from '../../helpers/constants';
 
 class Factory {
   public cookieProduction: number;
@@ -26,9 +27,9 @@ class Factory {
 
   constructor(cookieProduction: number, price: number, upgradePrice: number) {
     this.cookieProduction = cookieProduction;
-    this.maxLevel = 10;
-    this.currentLevel = 1;
-    this.upgradeMultiplier = 1.2;
+    this.maxLevel = FACTORIES.maxLevel;
+    this.currentLevel = FACTORIES.initLevel;
+    this.upgradeMultiplier = FACTORIES.upgradeMultiplier;
     this.price = price;
     this.upgradePrice = upgradePrice;
   }
