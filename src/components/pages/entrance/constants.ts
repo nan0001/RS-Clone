@@ -31,6 +31,11 @@ export const CONSTANTS = {
     classList: ['button', 'button__register'],
     text: 'Register',
   },
+  signInBtn: {
+    tag: TAGS.button,
+    classList: ['button', 'button__sign-in'],
+    text: 'Sign in',
+  },
   guestBtn: {
     tag: TAGS.button,
     classList: ['button', 'button__guest'],
@@ -43,5 +48,6 @@ export const CONSTANTS = {
   },
   registerBtnRU: 'Регистрация',
   guestBtnRU: 'Войти как гость',
+  signInBtnRU: 'Вход',
   aboutBtnRU: 'Наша команда',
 };
