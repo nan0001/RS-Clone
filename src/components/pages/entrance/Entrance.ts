@@ -2,6 +2,7 @@ import { changeView } from '../../../common/components/store/reducers/view';
 import store from '../../../common/components/store/store';
 import { VIEW } from '../../../common/helpers/constants';
 import createElement from '../../../common/helpers/createElement';
+import TeamPopup from '../../teamPopup/TeamPopup';
 import { CONSTANTS } from './constants';
 import './entrance.scss';
 import { changeLanguage } from './helpers';
@@ -25,6 +26,10 @@ class Entrance {
 
     guestBtn.addEventListener('click', () => {
       store.dispatch(changeView(VIEW.cookie));
+    });
+
+    aboutBtn.addEventListener('click', () => {
+      entrance.append(...new TeamPopup().draw());
     });
 
     store.subscribe(() => {

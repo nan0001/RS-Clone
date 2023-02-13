@@ -39,9 +39,9 @@ export const CONSTANTS = {
   aboutBtn: {
     tag: TAGS.button,
     classList: ['button', 'button__about'],
-    text: 'About the project',
+    text: 'Our team',
   },
   registerBtnRU: 'Регистрация',
   guestBtnRU: 'Войти как гость',
-  aboutBtnRU: 'О проекте',
+  aboutBtnRU: 'Наша команда',
 };
