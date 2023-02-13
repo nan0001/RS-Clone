@@ -3,6 +3,7 @@ import Sound from '../../components/sound/Sound';
 import createElement from '../helpers/createElement';
 import { CONSTANTS } from './constants';
 import '../styles/reset.scss';
+import '../styles/index.scss';
 import './app.scss';
 import Controls from '../../components/controls/Controls';
 import store from '../components/store/store';
