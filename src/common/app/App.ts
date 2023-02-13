@@ -41,6 +41,8 @@ class App {
           if (!page.classList.contains(CONSTANTS.pageSelectors.factory)) {
             appRoot.removeChild(page);
             appRoot.append(FactoryPage.draw());
+
+            if (GameBoard.timerId) GameBoard.stopGame();
           }
 
           break;
@@ -50,11 +52,14 @@ class App {
             appRoot.append(Entrance.draw());
 
             if (GameBoard.timerId) GameBoard.stopGame();
-            console.log(GameBoard.timerId);
           }
 
           break;
       }
+    });
+
+    document.addEventListener('selectstart', (e) => {
+      e.preventDefault();
     });
 
     document.body.append(overlay);
