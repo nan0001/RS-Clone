@@ -13,5 +13,8 @@ export const CONSTANTS = {
   image: {
     tag: TAGS.img,
     classList: 'game-field__item-image',
+    attributes: {
+      draggable: 'false',
+    },
   },
 };

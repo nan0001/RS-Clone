@@ -1,12 +1,13 @@
 @import '../../common/styles/main';
+
 .game-boosters {
   display: flex;
   justify-content: center;
-  gap: 3%;
+  gap: 12%;
+
   &__item {
     width: 100px;
     height: 100px;
-    //background-color: $light;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +20,46 @@
       height: 70px;
       z-index: 2;
     }
+
+    &-buy {
+      width: 90%;
+      height: 3rem;
+      position: absolute;
+      left: -75%;
+      top: 14%;
+      font-size: 1.3rem;
+      font-weight: bold;
+      font-style: italic;
+      opacity: 0;
+      transition: 0.5s;
+      background: url('../../common/assets/boosters/buyInfo.png') no-repeat;
+      background-size: cover;
+      color: #ffffff;
+      padding: 0.3rem;
+      text-shadow: 2px 0 2px $dark-green-blue, 0 2px 2px $dark-green-blue,
+        -2px 0 2px $dark-green-blue, 0 -2px 2px $dark-green-blue;
+
+      &_hovered {
+        opacity: 1;
+      }
+    }
+
+    &-count {
+      position: absolute;
+      min-width: 30%;
+      left: -10%;
+      bottom: -1%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 50%;
+      background-color: $green-blue;
+      border: 2px solid $blue;
+      color: #ffffff;
+      z-index: 3;
+      padding: 2%;
+    }
+
     &-timer {
       position: absolute;
       padding: 0.2% 3%;

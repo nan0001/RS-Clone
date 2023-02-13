@@ -6,7 +6,6 @@ import {
   addAnimation,
   generatePosition,
   getRandomItem,
-  playSound,
   updateCurrentItems,
 } from './helpers';
 import store from '../../common/components/store/store';
@@ -17,6 +16,7 @@ import {
   changeDoubleCost,
   changeSpeed,
 } from '../../common/components/store/reducers/fallingItems';
+import { playActionSound } from '../../common/helpers/playActionSound';
 
 class FallingItem {
   static prevState: number | string;
@@ -40,7 +40,7 @@ class FallingItem {
 
     image.addEventListener('click', () => {
       if (!fallingItem.classList.contains('game-field__item_blow')) {
-        playSound(click);
+        playActionSound(click);
       }
 
       if (item) {
@@ -78,7 +78,7 @@ class FallingItem {
   }
 
   static blow() {
-    playSound(sound);
+    playActionSound(sound);
     updateCurrentItems('game-field__item', (e) => {
       const img = e.firstElementChild as HTMLElement;
       e.classList.add('game-field__item_blow');

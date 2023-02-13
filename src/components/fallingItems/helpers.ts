@@ -94,14 +94,3 @@ export const addAnimation = (item: HTMLElement, start?: number) => {
   FallingItem.idAnime = window.requestAnimationFrame(step);
   return FallingItem.idAnime;
 };
-
-export const playSound = (file: string) => {
-  const audio = new Audio(file);
-  const soundBtn = document.querySelector('.button__sound');
-
-  if (soundBtn) {
-    if (soundBtn.classList.contains('sound-on')) {
-      audio.play();
-    }
-  }
-};
