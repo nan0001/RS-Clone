@@ -94,6 +94,9 @@
       &_active {
         opacity: 1;
         transform: translateX(-70%);
+        @media screen and(max-width: 450px) {
+          transform: translateX(100%);
+        }
       }
     }
 
@@ -131,10 +134,5 @@
       width: 80px;
       height: 80px;
     }
-    @media screen and(max-width: 450px) {
-      //width: 80%;
-    }
-  }
-  @media screen and(max-width: 450px) {
   }
 }
