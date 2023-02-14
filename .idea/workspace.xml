@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d2a16e6-b975-4a8c-85c1-6b93b321abad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/booster/booster.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/booster/booster.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/booster/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/booster/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/gameBoard/gameBoard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/gameBoard/gameBoard.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +74,7 @@
       <workItem from="1675702654836" duration="54219000" />
       <workItem from="1675931867083" duration="4069000" />
       <workItem from="1675936180188" duration="30029000" />
-      <workItem from="1676283071853" duration="47452000" />
+      <workItem from="1676283071853" duration="48206000" />
     </task>
     <servers />
   </component>
