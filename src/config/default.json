@@ -1,0 +1,7 @@
+{
+  "port": 3000,
+  "mongodbURI": "mongodb+srv://Pavel:testmongodb@cluster0.1yfypcz.mongodb.net/",
+  "jwtLifeTime": "1h",
+  "jwtSecretKey": "secret",
+  "minLengthPassword": 6
+}

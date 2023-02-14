@@ -1,0 +1,48 @@
+{
+  "name": "cookie-server",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Pavel Volkau",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon",
+    "start": "npm run build && node dist/index",
+    "build": "rimraf ./build && npx tsc",
+    "fix": "npx eslint --fix ./src",
+    "lint": "npx eslint ./src && npx prettier --check ./src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "browserslist": "> 0.25%, not dead",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.16",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "editorconfig": "^1.0.1",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "rimraf": "^4.1.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.0"
+  }
+}
