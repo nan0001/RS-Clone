@@ -59,6 +59,7 @@ export const BOOSTERS = [
     name: 'doubleCost',
     img: booster_1,
     timer: true,
+    cost: 200,
   },
   {
     id: 2,
@@ -66,11 +67,13 @@ export const BOOSTERS = [
     img: booster_2,
     property: 16000,
     timer: true,
+    cost: 100,
   },
   {
     id: 3,
     name: 'blow',
     img: booster_3,
+    cost: 300,
   },
 ];
 

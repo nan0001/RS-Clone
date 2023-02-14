@@ -4,6 +4,7 @@ import fallingItems from './reducers/fallingItems';
 import factories from './reducers/factories';
 import lang from './reducers/lang';
 import view from './reducers/view';
+import boostersCount from './reducers/boostersCount';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     view: view,
     fallingItems: fallingItems,
     factories: factories,
+    boosters: boostersCount,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
