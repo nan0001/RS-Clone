@@ -1,5 +1,13 @@
+import { changeView } from '../../common/components/store/reducers/view';
 import store from '../../common/components/store/store';
-import { LANG } from '../../common/helpers/constants';
+import { LANG, VIEW } from '../../common/helpers/constants';
+import { loginUser } from '../../common/helpers/loginUser';
+import { registerUser } from '../../common/helpers/registerUser';
+import {
+  Credentials,
+  UserLoginReturn,
+  UserRegisterReturn,
+} from '../../common/helpers/types';
 import { CONSTANTS } from './constants';
 
 export function checkValidity(
@@ -54,5 +62,57 @@ export function insertText(
     } else {
       enterBtn.innerText = CONSTANTS.registerText.ru;
     }
+  }
+}
+
+async function requestLogin(
+  credentials: Credentials,
+  popup: HTMLElement,
+  overlay: HTMLElement,
+): Promise<UserLoginReturn> {
+  const log: UserLoginReturn = await loginUser(credentials);
+
+  if (log.success) {
+    const token = log.data.token as string;
+    localStorage.setItem('token', token);
+    popup.remove();
+    overlay.remove();
+    store.dispatch(changeView(VIEW.cookie));
+  }
+
+  return log;
+}
+
+export async function signIn(
+  register: boolean,
+  popup: HTMLElement,
+  overlay: HTMLElement,
+  login: string,
+  password: string,
+  error: HTMLElement,
+): Promise<void> {
+  const credentials: Credentials = {
+    login,
+    password,
+  };
+
+  if (register) {
+    const res: UserRegisterReturn = await registerUser(credentials);
+
+    if (res.success) {
+      await requestLogin(credentials, popup, overlay);
+    }
+
+    error.classList.add(CONSTANTS.errorClassVisible);
+    error.innerText = res.data.message;
+  } else {
+    const log: UserLoginReturn = await requestLogin(
+      credentials,
+      popup,
+      overlay,
+    );
+
+    error.classList.add(CONSTANTS.errorClassVisible);
+    error.innerText = log.data.message;
   }
 }

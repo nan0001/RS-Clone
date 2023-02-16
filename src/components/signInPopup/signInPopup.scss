@@ -61,6 +61,14 @@
     }
   }
 
+  .error {
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
   &.register {
     .popup__inputs {
       gap: 0;

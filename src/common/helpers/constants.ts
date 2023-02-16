@@ -134,3 +134,19 @@ export const FACTORIES = {
     },
   },
 };
+
+export const BASE_LINK = 'http://localhost:3000'; // TODO: change after back deploy
+
+export const LINKS = {
+  userPost: BASE_LINK.concat('/api/user/post'),
+  userGet: BASE_LINK.concat('/api/user/get'),
+  register: BASE_LINK.concat('/api/auth/register'),
+  login: BASE_LINK.concat('/api/auth/login'),
+};
+
+export const METHODS = {
+  POST: 'POST',
+  GET: 'GET',
+};
+
+export const SUCCESS_REQUESTS = [200, 201, 202];
