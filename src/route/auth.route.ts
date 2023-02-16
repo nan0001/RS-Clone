@@ -11,7 +11,4 @@ authRouter.post('/register', userValidation, userController.createUser);
 // login
 authRouter.post('/login', userController.loginUser);
 
-// guest
-authRouter.post('/guest', userController.loginGuest);
-
 export default authRouter;

@@ -90,13 +90,4 @@ export default class AuthController {
         .json({ message: ERR_MESSAGES.default });
     }
   };
-
-  loginGuest: RequestHandler = async (req, res) => {
-    try {
-    } catch (err) {
-      res
-        .status(STATUS_CODE.ServerErrorInternal)
-        .json({ message: ERR_MESSAGES.default });
-    }
-  };
 }
