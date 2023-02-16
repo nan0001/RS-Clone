@@ -231,25 +231,25 @@
   {
     "data": {
       "boosters": {
-        "doubleCost": 2,
-        "changeSpeed": 3,
-        "blow": 0
+        "doubleCost": number,
+        "changeSpeed": number,
+        "blow": number
       },
       "factories": {
         "factoryS": {
-          "bought": false,
-          "level": 0
+          "bought": boolean,
+          "level": number
         },
         "factoryM": {
-          "bought": true,
-          "level": 0
+          "bought": boolean,
+          "level": number
         },
         "factoryL": {
-          "bought": false,
-          "level": "asdas"
+          "bought": boolean,
+          "level": number
         }
       },
-      "cookiesCount": 25
+      "cookiesCount": number
     }
   }
   ```
