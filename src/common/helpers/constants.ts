@@ -19,6 +19,7 @@ export const TAGS = {
   ul: 'ul',
   li: 'li',
   main: 'main',
+  a: 'a',
 };
 
 export const PRODUCTS = [

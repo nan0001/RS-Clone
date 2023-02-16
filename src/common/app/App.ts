@@ -3,6 +3,7 @@ import Sound from '../../components/sound/Sound';
 import createElement from '../helpers/createElement';
 import { CONSTANTS } from './constants';
 import '../styles/reset.scss';
+import '../styles/index.scss';
 import './app.scss';
 import Controls from '../../components/controls/Controls';
 import store from '../components/store/store';
@@ -40,6 +41,8 @@ class App {
           if (!page.classList.contains(CONSTANTS.pageSelectors.factory)) {
             appRoot.removeChild(page);
             appRoot.append(FactoryPage.draw());
+
+            if (GameBoard.timerId) GameBoard.stopGame();
           }
 
           break;
@@ -49,11 +52,14 @@ class App {
             appRoot.append(Entrance.draw());
 
             if (GameBoard.timerId) GameBoard.stopGame();
-            console.log(GameBoard.timerId);
           }
 
           break;
       }
+    });
+
+    document.addEventListener('selectstart', (e) => {
+      e.preventDefault();
     });
 
     document.body.append(overlay);
