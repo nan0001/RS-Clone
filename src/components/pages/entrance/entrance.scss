@@ -113,3 +113,36 @@
     }
   }
 }
+
+@media (max-height: 450px) {
+  .entrance {
+    .entrance__menu {
+      gap: 0;
+      justify-content: flex-start;
+      padding: 1% 10%;
+
+      .entrance__title {
+        font-size: 3em;
+      }
+    }
+  }
+}
+
+@media (max-height: 355px) {
+  .entrance {
+    .entrance__menu {
+      padding: 1% 5%;
+      .entrance__buttons {
+        padding: 1% 15%;
+
+        .button {
+          font-size: 1.1em;
+
+          &:hover {
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+}
