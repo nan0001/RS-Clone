@@ -5,6 +5,7 @@ import factories from './reducers/factories';
 import lang from './reducers/lang';
 import view from './reducers/view';
 import boostersCount from './reducers/boostersCount';
+import token from './reducers/token';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     fallingItems: fallingItems,
     factories: factories,
     boosters: boostersCount,
+    token: token,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

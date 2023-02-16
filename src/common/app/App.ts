@@ -10,6 +10,10 @@ import store from '../components/store/store';
 import { VIEW } from '../helpers/constants';
 import GameBoard from '../../components/pages/gameBoard/GameBoard';
 import FactoryPage from '../../components/pages/factoryPage/FactoryPage';
+// import SmallFactory from '../../components/smallFactory/SmallFactory';
+// import MediumFactory from '../../components/mediumFactory/MediumFactory';
+// import { resetFactory } from '../helpers/resetFactory';
+// import { saveFactory } from '../components/store/reducers/factories';
 
 class App {
   static init(): void {
@@ -27,6 +31,7 @@ class App {
     store.subscribe(() => {
       const state = store.getState();
       const view = state.view.view;
+      // const token = state.token.token;
       const page = appRoot.lastChild as HTMLElement;
 
       switch (view) {
@@ -56,6 +61,37 @@ class App {
 
           break;
       }
+
+      // if (token) {
+      //   //как только получили токен положить все в стейт из юзер даты, потом запустить заводы либо в хэлперах signIn
+      //   const smallFactory = state.factories.factoryS.bought
+      //     ? new SmallFactory()
+      //     : undefined;
+      //   const mediumFactory = state.factories.factoryS.bought
+      //     ? new MediumFactory()
+      //     : undefined;
+      //   const largeFactory = state.factories.factoryS.bought
+      //     ? new MediumFactory()
+      //     : undefined;
+
+      //   if (smallFactory) {
+      //     resetFactory(smallFactory, state.factories.factoryS.level);
+      //     store.dispatch(saveFactory(smallFactory));
+      //     smallFactory.product();
+      //   }
+
+      //   if (mediumFactory) {
+      //     resetFactory(mediumFactory, state.factories.factoryM.level);
+      //     store.dispatch(saveFactory(mediumFactory));
+      //     mediumFactory.product();
+      //   }
+
+      //   if (largeFactory) {
+      //     resetFactory(largeFactory, state.factories.factoryL.level);
+      //     store.dispatch(saveFactory(largeFactory));
+      //     largeFactory.product();
+      //   }
+      // }
     });
 
     document.addEventListener('selectstart', (e) => {

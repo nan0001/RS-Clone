@@ -13,7 +13,6 @@ export async function loginUser(
   });
 
   const data: LoginData = await res.json();
-  console.log(data);
 
   if (SUCCESS_REQUESTS.includes(res.status)) {
     return { success: true, data: data };

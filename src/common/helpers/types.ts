@@ -48,3 +48,12 @@ export type UserRegisterReturn = {
   success: boolean;
   data: RegisterData;
 };
+
+export type LoginMessages = {
+  ru: {
+    [key: string]: string;
+  };
+  en: {
+    [key: string]: string;
+  };
+};

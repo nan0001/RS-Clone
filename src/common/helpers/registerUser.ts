@@ -12,7 +12,6 @@ export async function registerUser(
     body: JSON.stringify(credentials),
   });
   const data: RegisterData = await res.json();
-  console.log(data);
 
   if (SUCCESS_REQUESTS.includes(res.status)) {
     return { success: true, data: data };

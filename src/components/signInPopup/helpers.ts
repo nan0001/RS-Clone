@@ -1,6 +1,7 @@
+import { setToken } from '../../common/components/store/reducers/token';
 import { changeView } from '../../common/components/store/reducers/view';
 import store from '../../common/components/store/store';
-import { LANG, VIEW } from '../../common/helpers/constants';
+import { LANG, LOGIN_MESSAGES, VIEW } from '../../common/helpers/constants';
 import { loginUser } from '../../common/helpers/loginUser';
 import { registerUser } from '../../common/helpers/registerUser';
 import {
@@ -65,6 +66,20 @@ export function insertText(
   }
 }
 
+function translateLogMessage(message: string): string {
+  let res = message;
+
+  if (store.getState().lang.lang === LANG.en) {
+    for (const prop in LOGIN_MESSAGES.ru) {
+      if (LOGIN_MESSAGES.ru[prop] === message) {
+        res = LOGIN_MESSAGES.en[prop];
+      }
+    }
+  }
+
+  return res;
+}
+
 async function requestLogin(
   credentials: Credentials,
   popup: HTMLElement,
@@ -74,7 +89,7 @@ async function requestLogin(
 
   if (log.success) {
     const token = log.data.token as string;
-    localStorage.setItem('token', token);
+    store.dispatch(setToken(token));
     popup.remove();
     overlay.remove();
     store.dispatch(changeView(VIEW.cookie));
@@ -104,7 +119,7 @@ export async function signIn(
     }
 
     error.classList.add(CONSTANTS.errorClassVisible);
-    error.innerText = res.data.message;
+    error.innerText = translateLogMessage(res.data.message);
   } else {
     const log: UserLoginReturn = await requestLogin(
       credentials,
@@ -113,6 +128,6 @@ export async function signIn(
     );
 
     error.classList.add(CONSTANTS.errorClassVisible);
-    error.innerText = log.data.message;
+    error.innerText = translateLogMessage(log.data.message);
   }
 }
