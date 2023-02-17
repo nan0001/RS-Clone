@@ -1,3 +1,4 @@
+import { enterGame } from '../../common/components/store/reducers/gameEnter';
 import { setToken } from '../../common/components/store/reducers/token';
 import { changeView } from '../../common/components/store/reducers/view';
 import store from '../../common/components/store/store';
@@ -102,6 +103,7 @@ async function requestLogin(
     popup.remove();
     overlay.remove();
     store.dispatch(changeView(VIEW.cookie));
+    store.dispatch(enterGame(true));
   }
 
   return log;

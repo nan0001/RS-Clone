@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LANG } from '../../../helpers/constants';
 
 const initialState = {
-  lang: LANG.en, //TODO: потом менять чтобы оно бралось с сервера
+  lang: LANG.en,
 };
 
 const lang = createSlice({
