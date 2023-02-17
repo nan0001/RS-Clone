@@ -1,14 +1,12 @@
-import { enterGame } from '../../../common/components/store/reducers/gameEnter';
 import { changeView } from '../../../common/components/store/reducers/view';
 import store from '../../../common/components/store/store';
 import { VIEW } from '../../../common/helpers/constants';
 import createElement from '../../../common/helpers/createElement';
-import { resetData } from '../../../common/helpers/resetData';
 import SignInPopup from '../../signInPopup/SignInPopup';
 import TeamPopup from '../../teamPopup/TeamPopup';
 import { CONSTANTS } from './constants';
 import './entrance.scss';
-import { changeLanguage } from './helpers';
+import { changeLanguage, guestBtnHandler } from './helpers';
 
 class Entrance {
   static draw(): HTMLElement {
@@ -47,11 +45,7 @@ class Entrance {
       entrance.append(...new SignInPopup().draw());
     });
 
-    guestBtn.addEventListener('click', () => {
-      resetData();
-      store.dispatch(changeView(VIEW.cookie));
-      store.dispatch(enterGame(true));
-    });
+    guestBtn.addEventListener('click', guestBtnHandler);
 
     aboutBtn.addEventListener('click', () => {
       entrance.append(...new TeamPopup().draw());
