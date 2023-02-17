@@ -24,12 +24,16 @@ export async function postUserData(): Promise<void> {
     },
   };
 
-  await fetch(LINKS.userPost, {
-    method: METHODS.POST,
-    headers: {
-      Authorization: store.getState().token.token as string,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(dataToPost),
-  });
+  try {
+    await fetch(LINKS.userPost, {
+      method: METHODS.POST,
+      headers: {
+        Authorization: store.getState().token.token as string,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataToPost),
+    });
+  } catch (e) {
+    console.log(e);
+  }
 }

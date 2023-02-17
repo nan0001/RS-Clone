@@ -88,25 +88,27 @@ async function requestLogin(
   credentials: Credentials,
   popup: HTMLElement,
   overlay: HTMLElement,
-): Promise<UserLoginReturn> {
-  const log: UserLoginReturn = await loginUser(credentials);
+): Promise<UserLoginReturn | undefined> {
+  const log: UserLoginReturn | void = await loginUser(credentials);
 
-  if (log.success) {
-    const token = log.data.token as string;
-    //если кто-то уже был залогинен отправляем его инфу перед сменой токена
-    if (store.getState().token.token) {
-      await postUserData();
+  if (log) {
+    if (log.success) {
+      const token = log.data.token as string;
+      //если кто-то уже был залогинен отправляем его инфу перед сменой токена
+      if (store.getState().token.token) {
+        await postUserData();
+      }
+      //а потом устанавливаем новый
+      resetData();
+      store.dispatch(setToken(token));
+      popup.remove();
+      overlay.remove();
+      store.dispatch(changeView(VIEW.cookie));
+      store.dispatch(enterGame(true));
     }
-    //а потом устанавливаем новый
-    resetData();
-    store.dispatch(setToken(token));
-    popup.remove();
-    overlay.remove();
-    store.dispatch(changeView(VIEW.cookie));
-    store.dispatch(enterGame(true));
-  }
 
-  return log;
+    return log;
+  }
 }
 
 export async function signIn(
@@ -123,27 +125,32 @@ export async function signIn(
   };
 
   if (register) {
-    const res: UserRegisterReturn = await registerUser(credentials);
+    const res: UserRegisterReturn | void = await registerUser(credentials);
 
-    if (res.success) {
-      await requestLogin(credentials, popup, overlay);
+    if (res) {
+      if (res.success) {
+        await requestLogin(credentials, popup, overlay);
+      }
+
+      error.classList.add(CONSTANTS.errorClassVisible);
+      error.innerText = translateLogMessage(res.data.message);
     }
-
-    error.classList.add(CONSTANTS.errorClassVisible);
-    error.innerText = translateLogMessage(res.data.message);
   } else {
-    const log: UserLoginReturn = await requestLogin(
+    const log: UserLoginReturn | void = await requestLogin(
       credentials,
       popup,
       overlay,
     );
-    const token = log.data.token;
 
-    if (token) {
-      updateAppData(token); //данные подтягиваем только при логине, т.к. при регистрации нового пользователя данных не будет
+    if (log) {
+      const token = log.data.token;
+
+      if (token) {
+        updateAppData(token); //данные подтягиваем только при логине, т.к. при регистрации нового пользователя данных не будет
+      }
+
+      error.classList.add(CONSTANTS.errorClassVisible);
+      error.innerText = translateLogMessage(log.data.message);
     }
-
-    error.classList.add(CONSTANTS.errorClassVisible);
-    error.innerText = translateLogMessage(log.data.message);
   }
 }
