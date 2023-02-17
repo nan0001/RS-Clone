@@ -3,12 +3,14 @@ import { changeView } from '../../common/components/store/reducers/view';
 import store from '../../common/components/store/store';
 import { LANG, LOGIN_MESSAGES, VIEW } from '../../common/helpers/constants';
 import { loginUser } from '../../common/helpers/loginUser';
+import { postUserData } from '../../common/helpers/postUserData';
 import { registerUser } from '../../common/helpers/registerUser';
 import {
   Credentials,
   UserLoginReturn,
   UserRegisterReturn,
 } from '../../common/helpers/types';
+import { updateAppData } from '../../common/helpers/updateAppData';
 import { CONSTANTS } from './constants';
 
 export function checkValidity(
@@ -89,7 +91,14 @@ async function requestLogin(
 
   if (log.success) {
     const token = log.data.token as string;
+    //если кто-то уже был залогинен отправляем его инфу перед сменой токена
+    if (store.getState().token.token) {
+      await postUserData();
+    }
+    //а потом устанавливаем новый
     store.dispatch(setToken(token));
+    //обновляем все данные приложения для текущего пользователя
+    updateAppData(token);
     popup.remove();
     overlay.remove();
     store.dispatch(changeView(VIEW.cookie));

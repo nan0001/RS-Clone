@@ -3,6 +3,7 @@ import LargeFactory from '../../../../components/largeFactory/LargeFactory';
 import MediumFactory from '../../../../components/mediumFactory/MediumFactory';
 import SmallFactory from '../../../../components/smallFactory/SmallFactory';
 import { FACTORY_TYPES } from '../../../helpers/constants';
+import { FactoryUpdate } from '../../../helpers/types';
 import Factory from '../../factory/Factory';
 
 type FactoriesState = {
@@ -106,10 +107,31 @@ const factories = createSlice({
           break;
       }
     },
+    setFactory(state, action: PayloadAction<FactoryUpdate>): void {
+      switch (action.payload.type) {
+        case FACTORY_TYPES.s:
+          state.factoryS.bought = action.payload.bought;
+          state.factoryS.level = action.payload.level;
+          break;
+        case FACTORY_TYPES.m:
+          state.factoryM.bought = action.payload.bought;
+          state.factoryM.level = action.payload.level;
+          break;
+        case FACTORY_TYPES.l:
+          state.factoryL.bought = action.payload.bought;
+          state.factoryL.level = action.payload.level;
+          break;
+      }
+    },
   },
 });
 
-export const { buyFactory, removeFactory, upgradeFactory, saveFactory } =
-  factories.actions;
+export const {
+  buyFactory,
+  removeFactory,
+  upgradeFactory,
+  saveFactory,
+  setFactory,
+} = factories.actions;
 
 export default factories.reducer;

@@ -57,3 +57,26 @@ export type LoginMessages = {
     [key: string]: string;
   };
 };
+
+export type UserDataReturn = {
+  message: string;
+  data: UserData;
+  timeHasPassed: number;
+};
+
+export type UserPostReturn = {
+  message: string;
+  updatedUser: {
+    acknowledged: boolean;
+    modifiedCount: number;
+    upsertedId: null;
+    upsertedCount: number;
+    matchedCount: number;
+  };
+};
+
+export type FactoryUpdate = {
+  type: string;
+  bought: boolean;
+  level: number;
+};

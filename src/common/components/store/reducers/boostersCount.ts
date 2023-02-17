@@ -35,10 +35,24 @@ const boostersCount = createSlice({
           break;
       }
     },
+    setDoubleCostCount(state, action: PayloadAction<number>): void {
+      state.doubleCost = action.payload;
+    },
+    setChangeSpeedCount(state, action: PayloadAction<number>): void {
+      state.changeSpeed = action.payload;
+    },
+    setBlowCount(state, action: PayloadAction<number>): void {
+      state.blow = action.payload;
+    },
   },
 });
 
-export const { increaseBoostersCount, decreaseBoostersCount } =
-  boostersCount.actions;
+export const {
+  increaseBoostersCount,
+  decreaseBoostersCount,
+  setDoubleCostCount,
+  setChangeSpeedCount,
+  setBlowCount,
+} = boostersCount.actions;
 
 export default boostersCount.reducer;

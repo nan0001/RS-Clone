@@ -1,10 +1,9 @@
 import store from '../components/store/store';
 import { LINKS, METHODS } from './constants';
-import { UserData } from './types';
+import { UserData, UserPostReturn } from './types';
 
 export async function postUserData(): Promise<void> {
   const dataToPost: UserData = {
-    cookiesCount: store.getState().cookies.count,
     boosters: store.getState().boosters,
     factories: {
       factoryS: {
@@ -20,6 +19,7 @@ export async function postUserData(): Promise<void> {
         level: store.getState().factories.factoryL.level,
       },
     },
+    cookiesCount: store.getState().cookies.count,
   };
 
   const res: Response = await fetch(LINKS.userPost, {
@@ -31,7 +31,7 @@ export async function postUserData(): Promise<void> {
     body: JSON.stringify(dataToPost),
   });
 
-  const data = await res.json();
+  const data: UserPostReturn = await res.json();
 
-  console.log(data);
+  alert(data);
 }

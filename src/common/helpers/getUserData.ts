@@ -1,16 +1,15 @@
-import store from '../components/store/store';
 import { LINKS, METHODS } from './constants';
-import { UserData } from './types';
+import { UserDataReturn } from './types';
 
-export async function getUserData(): Promise<void | UserData> {
+export async function getUserData(token: string): Promise<UserDataReturn> {
   const res: Response = await fetch(LINKS.userGet, {
     method: METHODS.GET,
     headers: {
-      Authorization: store.getState().token.token as string,
+      Authorization: token,
     },
   });
 
-  const data = await res.json();
+  const data: UserDataReturn = await res.json();
 
-  return data.data;
+  return data;
 }
