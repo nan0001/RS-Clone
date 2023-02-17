@@ -5,7 +5,7 @@ import { LANG, LOGIN_MESSAGES, VIEW } from '../../common/helpers/constants';
 import { loginUser } from '../../common/helpers/loginUser';
 import { postUserData } from '../../common/helpers/postUserData';
 import { registerUser } from '../../common/helpers/registerUser';
-import { stopOldFactories } from '../../common/helpers/stopOldFactories';
+import { resetData } from '../../common/helpers/resetData';
 import {
   Credentials,
   UserLoginReturn,
@@ -97,8 +97,8 @@ async function requestLogin(
       await postUserData();
     }
     //а потом устанавливаем новый
+    resetData();
     store.dispatch(setToken(token));
-    stopOldFactories();
     popup.remove();
     overlay.remove();
     store.dispatch(changeView(VIEW.cookie));
@@ -135,11 +135,10 @@ export async function signIn(
       popup,
       overlay,
     );
-    console.log(log);
     const token = log.data.token;
 
     if (token) {
-      updateAppData(token);
+      updateAppData(token); //данные подтягиваем только при логине, т.к. при регистрации нового пользователя данных не будет
     }
 
     error.classList.add(CONSTANTS.errorClassVisible);

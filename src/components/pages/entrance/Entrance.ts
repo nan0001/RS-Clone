@@ -2,6 +2,7 @@ import { changeView } from '../../../common/components/store/reducers/view';
 import store from '../../../common/components/store/store';
 import { VIEW } from '../../../common/helpers/constants';
 import createElement from '../../../common/helpers/createElement';
+import { resetData } from '../../../common/helpers/resetData';
 import SignInPopup from '../../signInPopup/SignInPopup';
 import TeamPopup from '../../teamPopup/TeamPopup';
 import { CONSTANTS } from './constants';
@@ -40,6 +41,7 @@ class Entrance {
     });
 
     guestBtn.addEventListener('click', () => {
+      resetData();
       store.dispatch(changeView(VIEW.cookie));
     });
 
