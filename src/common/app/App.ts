@@ -10,6 +10,7 @@ import store from '../components/store/store';
 import { VIEW } from '../helpers/constants';
 import GameBoard from '../../components/pages/gameBoard/GameBoard';
 import FactoryPage from '../../components/pages/factoryPage/FactoryPage';
+import { setGameSpeed } from '../helpers/setGameSpeed';
 
 class App {
   static init(): void {
@@ -34,6 +35,7 @@ class App {
           if (!page.classList.contains(CONSTANTS.pageSelectors.cookie)) {
             appRoot.removeChild(page);
             appRoot.append(GameBoard.draw());
+            setGameSpeed();
           }
 
           break;

@@ -66,7 +66,6 @@ export const BOOSTERS = [
     id: 2,
     name: 'changeSpeed',
     img: booster_2,
-    property: 16000,
     timer: true,
     cost: 100,
   },
@@ -133,4 +132,9 @@ export const FACTORIES = {
         'Большой завод производит 50 печенек в секунду. На максимальном уровне производство вырастет до 258 печенек',
     },
   },
+};
+
+export const COOKIES_SPEED = {
+  high: 4000,
+  low: 8000,
 };

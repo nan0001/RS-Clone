@@ -22,6 +22,7 @@ export const activateTimer = (
 
     if (counter == 0) {
       if (item && 'timer' in item) item.timer = true;
+
       timer.classList.remove('boosters-item__timer_active');
       func(FallingItem.prevState || '');
       clearInterval(timerId);

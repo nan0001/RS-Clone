@@ -19,7 +19,7 @@ import {
 import { playActionSound } from '../../common/helpers/playActionSound';
 
 class FallingItem {
-  static prevState: number | string;
+  static prevState: number;
   static idAnime: number;
 
   static draw(board: HTMLElement) {
@@ -45,8 +45,9 @@ class FallingItem {
 
       if (item) {
         let currentCost = item.cost;
+        const isDoubleCost = store.getState().fallingItems.doubleCost;
 
-        if (store.getState().fallingItems.doubleCost) {
+        if (isDoubleCost) {
           currentCost = item.cost * 2;
           cost.textContent = `+${item.cost}x2`;
         }
@@ -65,7 +66,6 @@ class FallingItem {
 
   static changeSpeed = (newSpeed: number) => {
     this.prevState = store.getState().fallingItems.speed;
-    // CONSTANTS.speed = newSpeed;
     store.dispatch(changeSpeed(newSpeed));
     updateCurrentItems('game-field__item', (e) => {
       const start = e.getBoundingClientRect().top;
@@ -92,7 +92,6 @@ class FallingItem {
 
   static doubleCost() {
     store.dispatch(changeDoubleCost());
-    // CONSTANTS.doubleCost = !CONSTANTS.doubleCost;
   }
 }
 

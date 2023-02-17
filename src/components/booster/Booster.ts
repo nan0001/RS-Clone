@@ -47,22 +47,31 @@ class Booster {
           if (item.timer === false) {
             return;
           }
+
           if (store.getState().boosters[name] == 0) {
             description.textContent = getText('buyInfo');
             description.style.color = '#22475b';
             description.style.backgroundColor = '#cfe7fa';
             description.classList.add('boosters-item__description_active');
+
             return;
           }
+
           target.addEventListener('mouseout', () => {
             description.classList.remove('boosters-item__description_active');
           });
-          item.property ? itemOnActive(item.property) : itemOnActive();
 
+          if (item.name === 'changeSpeed') {
+            const newSpeed = store.getState().fallingItems.speed * 2;
+            itemOnActive(newSpeed);
+          } else {
+            itemOnActive();
+          }
           if (item.timer) {
             timer.classList.add('boosters-item__timer_active');
             activateTimer(timer, itemOnActive, id);
           }
+
           store.dispatch(decreaseBoostersCount(item.name));
         }
 
