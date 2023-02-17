@@ -21,10 +21,10 @@ export async function updateAppData(token: string): Promise<void> {
   const smallFactory = data.factories.factoryS.bought
     ? new SmallFactory()
     : undefined;
-  const mediumFactory = data.factories.factoryS.bought
+  const mediumFactory = data.factories.factoryM.bought
     ? new MediumFactory()
     : undefined;
-  const largeFactory = data.factories.factoryS.bought
+  const largeFactory = data.factories.factoryL.bought
     ? new LargeFactory()
     : undefined;
 

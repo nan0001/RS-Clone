@@ -17,21 +17,11 @@ export function saveFactoryFromData(
       : factory instanceof MediumFactory
       ? data.factories.factoryM.level
       : data.factories.factoryL.level;
-  const oldFactory =
-    factory instanceof SmallFactory
-      ? store.getState().factories.factoryS.factory
-      : factory instanceof MediumFactory
-      ? store.getState().factories.factoryM.factory
-      : store.getState().factories.factoryL.factory;
 
   if (factory) {
     resetFactory(factory, factoryLevel);
-    const cookieAccum = Math.floor(factory.cookieProduction * timePassed);
 
-    //если был уже запущен завод, то его останавливаем
-    if (oldFactory) {
-      oldFactory.stopProduction();
-    }
+    const cookieAccum = Math.floor(factory.cookieProduction * timePassed);
 
     store.dispatch(saveFactory(factory));
     factory.product();

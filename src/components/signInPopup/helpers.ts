@@ -5,6 +5,7 @@ import { LANG, LOGIN_MESSAGES, VIEW } from '../../common/helpers/constants';
 import { loginUser } from '../../common/helpers/loginUser';
 import { postUserData } from '../../common/helpers/postUserData';
 import { registerUser } from '../../common/helpers/registerUser';
+import { stopOldFactories } from '../../common/helpers/stopOldFactories';
 import {
   Credentials,
   UserLoginReturn,
@@ -97,8 +98,7 @@ async function requestLogin(
     }
     //а потом устанавливаем новый
     store.dispatch(setToken(token));
-    //обновляем все данные приложения для текущего пользователя
-    updateAppData(token);
+    stopOldFactories();
     popup.remove();
     overlay.remove();
     store.dispatch(changeView(VIEW.cookie));
@@ -135,6 +135,12 @@ export async function signIn(
       popup,
       overlay,
     );
+    console.log(log);
+    const token = log.data.token;
+
+    if (token) {
+      updateAppData(token);
+    }
 
     error.classList.add(CONSTANTS.errorClassVisible);
     error.innerText = translateLogMessage(log.data.message);

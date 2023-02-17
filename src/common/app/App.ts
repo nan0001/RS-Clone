@@ -64,8 +64,8 @@ class App {
     });
 
     window.addEventListener('beforeunload', (e) => {
-      e.preventDefault();
       beforeUnloadHandler();
+      e.preventDefault();
     });
 
     document.body.append(overlay);
