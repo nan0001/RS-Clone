@@ -61,6 +61,15 @@
     }
   }
 
+  .error {
+    display: none;
+    font-size: 0.8em;
+
+    &.visible {
+      display: block;
+    }
+  }
+
   &.register {
     .popup__inputs {
       gap: 0;

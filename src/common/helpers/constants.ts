@@ -4,6 +4,7 @@ import card_3 from '../assets/cookies/cake(1-7).png';
 import booster_1 from '../assets/boosters/coinX2.png';
 import booster_2 from '../assets/boosters/hourglass.png';
 import booster_3 from '../assets/boosters/bomb.png';
+import { LoginMessages } from './types';
 
 export const TAGS = {
   div: 'div',
@@ -132,5 +133,52 @@ export const FACTORIES = {
       descriptionRU:
         'Большой завод производит 50 печенек в секунду. На максимальном уровне производство вырастет до 258 печенек',
     },
+  },
+};
+
+export const BASE_LINK = 'http://localhost:3000'; // TODO: change after back deploy
+
+export const LINKS = {
+  userPost: BASE_LINK.concat('/api/user/post'),
+  userGet: BASE_LINK.concat('/api/user/get'),
+  register: BASE_LINK.concat('/api/auth/register'),
+  login: BASE_LINK.concat('/api/auth/login'),
+};
+
+export const METHODS = {
+  POST: 'POST',
+  GET: 'GET',
+};
+
+export const SUCCESS_REQUESTS = [200, 201, 202];
+
+export const LOGIN_MESSAGES: LoginMessages = {
+  ru: {
+    wrong: 'Что-то пошло не так, попробуйте заново',
+    hasUser: 'Такой пользователь уже существует',
+    invalidData: 'Неверные данные',
+    invalidLogin: 'Некорректный логин',
+    invalidPassword: 'Некорректный пароль',
+    noAuthorization: 'Нет авторизации',
+    noData: 'Данные отстутствуют',
+    createUser: 'Пользователь создан',
+    createData: 'Данные созданы',
+    updateData: 'Данные обновлены',
+    loginUser: 'Вы успешно вошли в систему',
+    successGetData: 'Данные получены',
+  },
+  en: {
+    wrong: 'Something went wrong, try again',
+    hasUser: 'Such user already exists',
+    invalidData: 'Invalid data',
+    invalidLogin: 'Invalid login',
+    invalidPassword: 'Invalid password',
+    noAuthorization: 'Not authorized',
+    noData: 'No data',
+    createUser: 'User created',
+    createData: 'Data created',
+    updateData: 'Data updated',
+    loginUser: 'Succeessful enter',
+    successGetData: 'Data accepted',
   },
 };

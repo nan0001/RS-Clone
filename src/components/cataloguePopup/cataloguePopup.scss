@@ -15,3 +15,12 @@
     gap: 2%;
   }
 }
+
+@media (max-height: 550px) {
+  .popup__body {
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 2%;
+    height: 85%;
+  }
+}

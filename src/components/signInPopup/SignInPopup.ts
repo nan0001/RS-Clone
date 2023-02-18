@@ -1,10 +1,10 @@
 import Popup from '../../common/components/popup/Popup';
-import { changeView } from '../../common/components/store/reducers/view';
+// import { changeView } from '../../common/components/store/reducers/view';
 import store from '../../common/components/store/store';
-import { LANG, VIEW } from '../../common/helpers/constants';
+import { LANG } from '../../common/helpers/constants';
 import createElement from '../../common/helpers/createElement';
 import { CONSTANTS } from './constants';
-import { checkValidity, insertText } from './helpers';
+import { checkValidity, insertText, signIn } from './helpers';
 import './signInPopup.scss';
 
 class SignInPopup extends Popup {
@@ -25,25 +25,31 @@ class SignInPopup extends Popup {
     const enterBtn = createElement(CONSTANTS.enterBtn) as HTMLButtonElement;
     const loginInfo = createElement(CONSTANTS.popupLoginInfo);
     const passInfo = createElement(CONSTANTS.popupLoginInfo);
+    const error = createElement(CONSTANTS.error);
 
     insertText(loginInp, passInp, loginInfo, passInfo, enterBtn, this.register);
 
     enterBtn.disabled = true;
 
-    loginInp.addEventListener('change', () => {
+    loginInp.addEventListener('input', () => {
       checkValidity(loginInp, passInp, enterBtn);
+      error.classList.remove(CONSTANTS.errorClassVisible);
     });
 
-    passInp.addEventListener('change', () => {
+    passInp.addEventListener('input', () => {
       checkValidity(passInp, loginInp, enterBtn);
+      error.classList.remove(CONSTANTS.errorClassVisible);
     });
 
     enterBtn.addEventListener('click', () => {
-      //check login and pass;
-      //if ok
-      popup.remove();
-      overlay.remove();
-      store.dispatch(changeView(VIEW.cookie));
+      signIn(
+        this.register,
+        popup,
+        overlay,
+        loginInp.value,
+        passInp.value,
+        error,
+      );
     });
 
     if (this.register) {
@@ -53,7 +59,7 @@ class SignInPopup extends Popup {
       popupInputs.append(loginInp, passInp);
     }
 
-    popupBody.append(popupInputs, enterBtn);
+    popupBody.append(popupInputs, enterBtn, error);
     popup.append(popupBody);
 
     return [overlay, popup];

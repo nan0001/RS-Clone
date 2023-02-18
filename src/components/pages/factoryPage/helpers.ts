@@ -2,6 +2,7 @@ import { RootState } from '../../../common/components/store/store';
 import { LANG } from '../../../common/helpers/constants';
 import { defineFactoryState } from '../../../common/helpers/defineFactoryState';
 import { defineFactoryType } from '../../../common/helpers/defineFactoryType';
+import { resetFactory } from '../../../common/helpers/resetFactory';
 import LargeFactory from '../../largeFactory/LargeFactory';
 import MediumFactory from '../../mediumFactory/MediumFactory';
 import SmallFactory from '../../smallFactory/SmallFactory';
@@ -29,40 +30,40 @@ function isFactoryAmongChildren(
   return index === -1 ? false : true;
 }
 
-function multiplyProductionByLevel(
-  factory: SmallFactory | MediumFactory | LargeFactory,
-  level: number,
-): number {
-  let production = factory.initProduction;
+// function multiplyProductionByLevel(
+//   factory: SmallFactory | MediumFactory | LargeFactory,
+//   level: number,
+// ): number {
+//   let production = factory.initProduction;
 
-  for (let i = 1; i < level; i++) {
-    production = Math.round(production * factory.upgradeMultiplier);
-  }
+//   for (let i = 1; i < level; i++) {
+//     production = Math.round(production * factory.upgradeMultiplier);
+//   }
 
-  return production;
-}
+//   return production;
+// }
 
-function multiplyUpgradeCostByLevel(
-  factory: SmallFactory | MediumFactory | LargeFactory,
-  level: number,
-): number {
-  let cost = factory.initUpgradePrice;
+// function multiplyUpgradeCostByLevel(
+//   factory: SmallFactory | MediumFactory | LargeFactory,
+//   level: number,
+// ): number {
+//   let cost = factory.initUpgradePrice;
 
-  for (let i = 1; i < level; i++) {
-    cost = Math.round(cost * factory.upgradeMultiplier);
-  }
+//   for (let i = 1; i < level; i++) {
+//     cost = Math.round(cost * factory.upgradeMultiplier);
+//   }
 
-  return cost;
-}
+//   return cost;
+// }
 
-function resetFactory(
-  factory: SmallFactory | MediumFactory | LargeFactory,
-  level: number,
-): void {
-  factory.currentLevel = level;
-  factory.cookieProduction = multiplyProductionByLevel(factory, level);
-  factory.upgradePrice = multiplyUpgradeCostByLevel(factory, level);
-}
+// function resetFactory(
+//   factory: SmallFactory | MediumFactory | LargeFactory,
+//   level: number,
+// ): void {
+//   factory.currentLevel = level;
+//   factory.cookieProduction = multiplyProductionByLevel(factory, level);
+//   factory.upgradePrice = multiplyUpgradeCostByLevel(factory, level);
+// }
 
 function checkFactory(
   state: RootState,

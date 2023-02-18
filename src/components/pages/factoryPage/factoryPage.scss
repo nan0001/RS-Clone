@@ -113,3 +113,14 @@
     }
   }
 }
+
+@media (max-height: 500px) {
+  .factory-pg {
+    .factory-pg__container {
+      overflow-y: auto;
+      .factory-pg__placeholder {
+        margin-top: 10%;
+      }
+    }
+  }
+}
