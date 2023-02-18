@@ -6,7 +6,7 @@ import SignInPopup from '../../signInPopup/SignInPopup';
 import TeamPopup from '../../teamPopup/TeamPopup';
 import { CONSTANTS } from './constants';
 import './entrance.scss';
-import { changeLanguage } from './helpers';
+import { changeLanguage, guestBtnHandler } from './helpers';
 
 class Entrance {
   static draw(): HTMLElement {
@@ -19,17 +19,23 @@ class Entrance {
     const signInBtn = createElement(CONSTANTS.signInBtn);
     const guestBtn = createElement(CONSTANTS.guestBtn);
     const aboutBtn = createElement(CONSTANTS.aboutBtn);
+    const continueBtn = createElement(CONSTANTS.continueBtn);
 
     changeLanguage(store.getState(), {
       registerBtn,
       guestBtn,
       aboutBtn,
       signInBtn,
+      continueBtn,
     });
 
     btnContainer.append(registerBtn, signInBtn, guestBtn, aboutBtn);
     menu.append(title, btnContainer);
     entrance.append(bgImg, menu);
+
+    if (store.getState().enter.enter) {
+      btnContainer.prepend(continueBtn);
+    }
 
     registerBtn.addEventListener('click', () => {
       entrance.append(...new SignInPopup(true).draw());
@@ -39,18 +45,26 @@ class Entrance {
       entrance.append(...new SignInPopup().draw());
     });
 
-    guestBtn.addEventListener('click', () => {
-      store.dispatch(changeView(VIEW.cookie));
-    });
+    guestBtn.addEventListener('click', guestBtnHandler);
 
     aboutBtn.addEventListener('click', () => {
       entrance.append(...new TeamPopup().draw());
     });
 
+    continueBtn.addEventListener('click', () => {
+      store.dispatch(changeView(VIEW.cookie));
+    });
+
     store.subscribe(() => {
       const state = store.getState();
 
-      changeLanguage(state, { registerBtn, guestBtn, aboutBtn, signInBtn });
+      changeLanguage(state, {
+        registerBtn,
+        guestBtn,
+        aboutBtn,
+        signInBtn,
+        continueBtn,
+      });
     });
 
     return entrance;

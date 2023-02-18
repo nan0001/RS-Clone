@@ -35,8 +35,8 @@ export const CONSTANTS = {
     ru: 'Логин должен быть не короче 5 символов',
   },
   popupPassInfoText: {
-    en: 'Password must be at least of 4 characters',
-    ru: 'Пароль должен быть не короче 4 символов',
+    en: 'Password must be at least of 6 characters',
+    ru: 'Пароль должен быть не короче 6 символов',
   },
   popupPassword: {
     tag: TAGS.input,
@@ -67,5 +67,10 @@ export const CONSTANTS = {
     ru: 'Зарегистрироваться',
   },
   minLoginLength: 5,
-  minPassLength: 4,
+  minPassLength: 6,
+  error: {
+    tag: TAGS.p,
+    classList: 'error',
+  },
+  errorClassVisible: 'visible',
 };

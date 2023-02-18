@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
-  count: 0, //TODO: потом менять чтобы оно бралось с сервера
+  count: 0,
 };
 
 const cookiesCount = createSlice({
@@ -16,10 +16,13 @@ const cookiesCount = createSlice({
         ? (state.count = 0)
         : (state.count -= action.payload);
     },
+    setCookiesCount(state, action: PayloadAction<number>): void {
+      state.count = action.payload;
+    },
   },
 });
 
-export const { increaseCookiesCount, decreaseCookiesCount } =
+export const { increaseCookiesCount, decreaseCookiesCount, setCookiesCount } =
   cookiesCount.actions;
 
 export default cookiesCount.reducer;

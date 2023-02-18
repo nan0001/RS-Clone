@@ -46,8 +46,14 @@ export const CONSTANTS = {
     classList: ['button', 'button__about'],
     text: 'Our team',
   },
+  continueBtn: {
+    tag: TAGS.button,
+    classList: ['button', 'button__continue'],
+    text: 'Back to game',
+  },
   registerBtnRU: 'Регистрация',
   guestBtnRU: 'Войти как гость',
   signInBtnRU: 'Вход',
   aboutBtnRU: 'Наша команда',
+  continueBtnRU: 'Вернуться к игре',
 };

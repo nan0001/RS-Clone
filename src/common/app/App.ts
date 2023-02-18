@@ -10,6 +10,7 @@ import store from '../components/store/store';
 import { VIEW } from '../helpers/constants';
 import GameBoard from '../../components/pages/gameBoard/GameBoard';
 import FactoryPage from '../../components/pages/factoryPage/FactoryPage';
+import { beforeUnloadHandler } from './helpers';
 import { setGameSpeed } from '../helpers/setGameSpeed';
 
 class App {
@@ -61,6 +62,11 @@ class App {
     });
 
     document.addEventListener('selectstart', (e) => {
+      e.preventDefault();
+    });
+
+    window.addEventListener('beforeunload', (e) => {
+      beforeUnloadHandler();
       e.preventDefault();
     });
 
