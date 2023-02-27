@@ -135,7 +135,7 @@ export const FACTORIES = {
   },
 };
 
-export const BASE_LINK = 'http://localhost:3000'; // TODO: change after back deploy
+export const BASE_LINK = 'https://whispering-journey-10239.herokuapp.com';
 
 export const LINKS = {
   userPost: BASE_LINK.concat('/api/user/post'),
