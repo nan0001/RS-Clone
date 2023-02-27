@@ -67,7 +67,6 @@ export const BOOSTERS = [
     id: 2,
     name: 'changeSpeed',
     img: booster_2,
-    property: 16000,
     timer: true,
     cost: 100,
   },
@@ -181,4 +180,9 @@ export const LOGIN_MESSAGES: LoginMessages = {
     loginUser: 'Succeessful enter',
     successGetData: 'Data accepted',
   },
+};
+
+export const COOKIES_SPEED = {
+  high: 4000,
+  low: 8000,
 };
