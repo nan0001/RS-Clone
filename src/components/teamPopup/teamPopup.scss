@@ -1,0 +1,33 @@
+@import '../../common/styles/main.scss';
+
+.popup__body-team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10%;
+  height: 90%;
+  font-size: 1.5em;
+
+  .popup__name-link {
+    color: $dark-red;
+    transition: 0.3s;
+
+    &:hover {
+      color: $brown;
+      font-weight: 700;
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .popup__body-team {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 460px) {
+  .popup__body-team {
+    font-size: 1em;
+  }
+}

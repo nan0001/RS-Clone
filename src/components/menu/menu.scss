@@ -1,0 +1,117 @@
+@import '../../common/styles/main';
+
+.menu {
+  position: relative;
+  width: 50px;
+  display: flex;
+  gap: 5%;
+  transition: 0.5s linear;
+  overflow: hidden;
+
+  .button {
+    height: 50px;
+    width: 50px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .button__menu {
+    background-image: url('../../common/assets/images/menu.png');
+  }
+
+  .menu__list {
+    display: flex;
+    position: absolute;
+    left: 60px;
+    width: 80%;
+    gap: 5%;
+
+    .menu__item {
+      .button__fullscreen {
+        background-image: url('../../common/assets/images/small_screen.png');
+
+        &.fullscreen-off {
+          background-image: url('../../common/assets/images/fullscreen.png');
+        }
+      }
+
+      .button__sound {
+        background-image: url('../../common/assets/images/sound_off.png');
+
+        &.sound-on {
+          background-image: url('../../common/assets/images/sound.png');
+        }
+      }
+
+      .button__lang {
+        background-image: url('../../common/assets/images/lang_ru.png');
+        &.lang-en {
+          background-image: url('../../common/assets/images/lang_en.png');
+        }
+      }
+
+      .button__help {
+        background-image: url('../../common/assets/images/help.png');
+      }
+    }
+  }
+
+  &.menu-visible {
+    width: 650%;
+
+    .menu__list {
+      display: flex;
+    }
+
+    .button__menu {
+      background-image: url('../../common/assets/images/cancel.png');
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .menu {
+    width: 40px;
+
+    .button {
+      height: 40px;
+      width: 40px;
+    }
+
+    .menu__list {
+      left: 50px;
+    }
+
+    &.menu-visible {
+      width: 650%;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .menu {
+    width: 30px;
+
+    .button {
+      height: 30px;
+      width: 30px;
+    }
+
+    .menu__list {
+      left: 40px;
+    }
+
+    &.menu-visible {
+      width: 650%;
+    }
+  }
+}
